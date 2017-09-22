@@ -8,6 +8,7 @@ body {
 
 #container {
 	width: 500px;
+	margin: 0 auto;
 	border: 1px solid #03F;
 }
 
@@ -22,11 +23,13 @@ body {
 .player-info img {
 	width: 100px;
 	height: 90px;
+	padding: 5px;
 }
 
-.player-info{
+.player-info {
 	display: -webkit-flex;
 	display: flex;
+	padding: 5px;
 }
 
 .detail-info {
@@ -58,6 +61,7 @@ ul.detail-info {
 
 .facts {
 	margin-bottom: 50px;
+	padding: 5px;
 }
 
 /*comments*/
@@ -75,7 +79,8 @@ ul.detail-info {
 	content: url(../../img/comment_bg.gif);
 	width: 25px;
 	height: 20px;
-	padding: 30px;
+	padding: 15px;
+	margin-left: 15px;
 }
 
 .comments a {
@@ -83,15 +88,38 @@ ul.detail-info {
 }
 
 /*Your Comment*/
+.your-comment {
+	padding: 5px;
+}
+
 .your-comment .title {
 	background: none;
 	margin-top: 20px;
-}
-
-.your-comment .title {
 	text-align: center;
 }
 
-.your-comment textarea {
+.your-comment-row {
+	display: table;
+	padding: 1px;
+	margin: 1px;
+}
+
+.your-comment-left {
+	padding-left: 3px;
+	margin-top: 2px;
+	display: table-cell;
+	width: 125px;
+	vertical-align: middle;
+}
+
+.your-comment-right {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.your-comment-right textarea {
+	margin-top: 2px;
+	width: 350px;
+	height: 100px;
 	resize: none;
 }

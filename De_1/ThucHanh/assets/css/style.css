@@ -1,0 +1,30 @@
+@charset="utf-8";
+
+body {
+	font-family: Verdana, "Arial", Helvetica, sans-serif;
+	background: #2D2F35;
+	margin: 0;
+	padding: 0;
+}
+
+#container {
+	
+}
+
+.intro {
+	background-image: url(../../img/bg_home_intro.gif);
+	padding: 0 100px 0 100px;
+}
+
+.title {
+	color: yellow;
+	font-size: 22;
+}
+
+p {
+	color: white;
+}
+
+.inner {
+	width: 50%;
+}
