@@ -1,0 +1,47 @@
+body {
+	font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+#container {
+	width: 500px;
+	border: 1px solid #03F;
+}
+
+.title {
+	margin: 0;
+	padding: 0;
+	background-image: url('img/title_bg.gif');
+	height: 25px;
+}
+
+.player-info img {
+	width: 100px;
+	height: 90px;
+}
+
+.player-info{
+	display: -webkit-flex;
+	display: flex;
+}
+
+.detail-info {
+	margin-left: 15px;
+	height: 100px;
+	width: 100%;
+	overflow: scroll;
+}
+
+ul.detail-info {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.facts ul li:before {
+	content: url('img/star.gif');
+	margin-right: 15px;
+}
+
+.comment-title {
+	text-align: center;
+}
