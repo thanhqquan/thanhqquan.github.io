@@ -1,5 +1,9 @@
+@charset="utf-8";
+
 body {
 	font-family: Georgia, "Times New Roman", Times, serif;
+	margin: 0;
+	padding: 0;
 }
 
 #container {
@@ -10,10 +14,11 @@ body {
 .title {
 	margin: 0;
 	padding: 0;
-	background-image: url('img/title_bg.gif');
+	background-image: url(../../img/title_bg.gif);
 	height: 25px;
 }
 
+/*player profile*/
 .player-info img {
 	width: 100px;
 	height: 90px;
@@ -37,11 +42,56 @@ ul.detail-info {
 	margin: 0;
 }
 
-.facts ul li:before {
-	content: url('img/star.gif');
-	margin-right: 15px;
+/*Facts*/
+.facts .title {
+	background: none;
 }
 
-.comment-title {
+.facts ul li:before {
+	content: url(../../img/star.gif);
+	margin-right: 5px;
+}
+
+.facts-info {
+	list-style: none;
+}
+
+.facts {
+	margin-bottom: 50px;
+}
+
+/*comments*/
+.comments .info {
+	background: #ECECEC;
+	padding: 5px 5px;
+	margin: 0 5px 0 5px;
+}
+
+.comments p {
+	margin: 0;
+}
+
+.comments p:before {
+	content: url(../../img/comment_bg.gif);
+	width: 25px;
+	height: 20px;
+	padding: 30px;
+}
+
+.comments a {
+	text-decoration: none;
+}
+
+/*Your Comment*/
+.your-comment .title {
+	background: none;
+	margin-top: 20px;
+}
+
+.your-comment .title {
 	text-align: center;
+}
+
+.your-comment textarea {
+	resize: none;
 }

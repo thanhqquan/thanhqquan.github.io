@@ -2,13 +2,12 @@
 <html lang="en-us">
   <head>
     <title>Đề 1 - Bài tập lý thuyết</title>
-    <meta charset="UTF-8">
     <link rel="stylesheet" href="assets/css/style.css">
   </head>
   <body>
     <div id="container">
         <div class="player-profile">
-          <h3 class="title" style="background-image: url('img/title_bg.gif')">Player Profile</h3>
+          <h3 class="title">Player Profile</h3>
           <div class="player-info">
             <img src="img/avatar.gif" alt="Avatar">
             <ul class="detail-info">
@@ -23,7 +22,7 @@
         </div>
         
         <div class="facts">
-          <h3 class="facts-title">Facts:</h3>
+          <h3 class="title">Facts:</h3>
           <ul class="facts-info">
               <li>Nam gia nhap The Cong nam 1999</li>
               <li>Trong suot thoi trai tre gia nhap The cong Nam da ghi duoc 160 ban thang trong vong 7 nam</li>
@@ -34,21 +33,28 @@
         </div>
         
         <div class="comments">
-          <p>Nam choi cho cau lac bo the cong.<br>The cong da dat cup vo dich</p>
+          <div class="info">Nam choi cho cau lac bo the cong.<br>The cong da dat cup vo dich</div>
           <p>Posted by <a href="#">The cong's Fan</a> 20/12/2017</p>
-          <p>Nam la cau thu choi rat hay o The cong<br>Va anh ta da chuyen toi Hoa phat <>:)</p>
+          <div class="info">Nam la cau thu choi rat hay o The cong<br>Va anh ta da chuyen toi Hoa phat <>:)</div>
           <p>Postted by <a href="#">Hoa phat's Fan</a> 20/12/2017</p>
         </div>
         
-        
         <div class="your-comment">
-          <h3 class="comment-title">Your Comment</h3>
-          <p>Your name</p>
-          <input type="text" name="fullName">
-          <p>Your email (will not public)</p>
-          <input type="text" name="email">
-          <p>Comment</p>
-          <textarea>Your comment here &lt;/textarea&gt;</textarea>
+          <h3 class="title">Your Comment</h3>
+          <table>
+            <tr>
+              <td>Your name</td>
+              <td><input type="text" name="fullName"></td>
+            </tr>
+            <tr>
+              <td>Your email (will not public)</td>
+              <td><input type="text" name="email"></td>
+            </tr>
+            <tr>
+              <td>Comment</td>
+              <td><textarea name="comment" cols="50" rows="5">Your comment here &lt;/textarea&gt;</textarea></td>
+            </tr>
+          </table>
         </div>
     </div>
   </body>
