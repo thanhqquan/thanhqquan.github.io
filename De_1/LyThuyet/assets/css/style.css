@@ -14,22 +14,24 @@ body {
 
 .title {
 	margin: 0;
-	padding: 0;
+	padding-top: 3px;
 	background-image: url(../../img/title_bg.gif);
 	height: 25px;
+	font-weight: bold;
 }
 
 /*player profile*/
 .player-info img {
 	width: 100px;
 	height: 90px;
-	padding: 5px;
+	padding: 3px;
 }
 
 .player-info {
 	display: -webkit-flex;
 	display: flex;
-	padding: 5px;
+	padding-left: 3px;
+	padding-right: 3px;
 }
 
 .detail-info {
@@ -57,30 +59,36 @@ ul.detail-info {
 
 .facts-info {
 	list-style: none;
+	margin-top: 10px;
 }
 
 .facts {
-	margin-bottom: 50px;
+	margin-bottom: 30px;
 	padding: 5px;
 }
 
 /*comments*/
-.comments .info {
-	background: #ECECEC;
-	padding: 5px 5px;
-	margin: 0 5px 0 5px;
+.comments {
+	padding: 3px;
 }
 
-.comments p {
+.info-comment {
+	background: #ECECEC;
+	padding: 5px 5px;
 	margin: 0;
 }
 
-.comments p:before {
+.info-person-comment{
+	margin: 0;
+	font-size: 14px;
+}
+
+.info-person-comment:before {
 	content: url(../../img/comment_bg.gif);
 	width: 25px;
 	height: 20px;
-	padding: 15px;
-	margin-left: 15px;
+	margin-left: 20px;
+	margin-right: 10px;
 }
 
 .comments a {
@@ -89,12 +97,13 @@ ul.detail-info {
 
 /*Your Comment*/
 .your-comment {
-	padding: 5px;
+	margin-top: 20px;
+	padding-left: 3px;
+	padding-right: 3px;
 }
 
 .your-comment .title {
 	background: none;
-	margin-top: 20px;
 	text-align: center;
 }
 
@@ -119,7 +128,7 @@ ul.detail-info {
 
 .your-comment-right textarea {
 	margin-top: 2px;
-	width: 350px;
+	width: 356px;
 	height: 100px;
 	resize: none;
 }

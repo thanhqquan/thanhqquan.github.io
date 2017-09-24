@@ -25,6 +25,15 @@ p {
 	color: white;
 }
 
+.content {
+	padding: 0 100px 0 100px;
+}
+
 .inner {
 	width: 50%;
+	float: left;
+}
+
+.footer {
+	text-align: center;
 }
