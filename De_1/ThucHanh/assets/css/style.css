@@ -27,11 +27,25 @@ h3 {
 	margin-top: 0px;
 }
 
+.clear {
+    clear: both;
+}
+
+/*header*/
+.logo {
+	margin: 10px;
+}
+
+.header {
+	border-bottom: 1px solid #474a51;
+}
+
 /*banner*/
 .banner {
 	background-image: url(../../img/bg_home_intro.gif);
 	padding: 0 10% 0 10%;
 	float: left;
+	border-bottom: 1px solid #474a51;
 }
 
 .banner-left {
@@ -42,43 +56,79 @@ h3 {
 .banner-right {
 	float: left;
 	position: absolute;
-	right: 90px;
+	right: 12%;
 }
 
 /*menu*/
 .menu {
-	width: 80%;
-	float: left;
+	padding: 20px 0 10px 0;
+	border-bottom: 1px solid #474a51;
 }
 
 .menu ul {
-	margin: 0 auto;
+	width: 100%;
+	padding: 0;
+	list-style-type: none;
+	text-align: center;
 }
 
-.menu ul li{
-	position: absolute;
-	float: left;
-	position: relative;
+.menu ul li {
+    display: inline-block;
+	margin-left: 10px;
 }
 
 .menu-number {
 	position: absolute;
+	padding-left: 188px;
+	padding-top: 2px;
 }
 
 /*content*/
 .content {
-	padding: 0 10% 0 10%;
+	padding: 10px 12% 0 10%;
+	border-bottom: 1px solid #474a51;
+	float: left;
+	
 }
 
 .content-left {
-	width: 39%;
+	width: 40%;
+	text-align: justify;
+	float: left;
+	background-image: url(../../img/home_services_bg_design.gif);
+	background-repeat: no-repeat;
+	background-position: bottom right;
 }
 
 .content-right {
-	width: 39%;
+	width: 40%;
+	text-align: justify;
+	float: right;
+	background: url(../../img/home_services_bg_marketing.gif);
+	background-repeat: no-repeat;
 }
 
+.content-left h3 {
+	font-size: 20px;
+	margin-bottom: 0;
+}
+
+.content-right h2 {
+	font-size: 20px;
+}
+
+.content-left p {
+	margin-top: 5px;
+}
+
+.content-right p {
+	margin-top: 45px;
+	margin-bottom: 5px;
+}
+
+/*footer*/
 .footer {
-	background-image: url(../../img/bg_footer.gif);
+	background: url(../../img/bg_footer.gif) #24262a center no-repeat;
 	text-align: center;
+	height: 110px;
 }
