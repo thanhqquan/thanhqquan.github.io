@@ -1,17 +1,14 @@
 @charset="utf-8";
-
 body {
 	font-family: Georgia, "Times New Roman", Times, serif;
 	margin: 0;
 	padding: 0;
 }
-
 #container {
 	width: 500px;
 	margin: 0 auto;
 	border: #03F solid 1px;
 }
-
 .title {
 	margin: 0;
 	padding-top: 4px;
@@ -20,95 +17,73 @@ body {
 	font-weight: bold;
 	letter-spacing: .5px;
 }
-
 /*player profile*/
 .player-info img {
 	width: 100px;
 	height: 90px;
 	padding: 3px;
 }
-
 .player-info {
 	display: flex;
 	padding: 0 3px 0 3px;
 }
-
 .detail-info {
 	margin-left: 15px;
 	height: 100px;
 	width: 100%;
 	overflow: scroll;
 }
-
 ul.detail-info {
 	list-style: none;
 	padding: 0;
 	margin: 0;
 }
-
 /*Facts*/
-.facts .title {
-	background: none;
-}
-
+.facts .title { background: none; }
 .facts ul li:before {
 	content: url(../../img/star.gif);
 	margin-right: 5px;
 }
-
 .facts-info {
 	list-style: none;
 	margin-top: 10px;
 	padding-left: 40px;
 }
-
 .facts {
 	margin: 10px 0 30px 0;
 	padding: 5px;
 }
-
 /*comments*/
-.comments {
-	padding: 3px;
-}
-
+.comments {	padding: 3px; }
 .info-comment {
 	background: #ECECEC;
 	padding: 5px 5px;
 	margin: 0;
 	font-size: 15px;
 }
-
 .info-person-comment {
 	font-size: 13.5px;
 	background: url(../../img/comment_bg.gif) top left no-repeat;
 	padding-left: 45px;
 	margin-left: 25px;
 }
-
-.comments a {
-	text-decoration: none;
-}
-
+.comments a { text-decoration: none; }
 /*Your Comment*/
 .your-comment {
 	margin-top: 20px;
 	padding: 0 3px 0 3px;
 }
-
 .your-comment .title {
 	background: none;
 	text-align: center;
 	padding-left: 35px;
 	margin-bottom: -5px;
 }
-
 .your-comment-row {
 	display: table;
 	padding: 1px;
 	margin: 1px;
 }
-
 .your-comment-left {
 	padding-left: 3px;
 	margin-top: 2px;
@@ -116,12 +91,10 @@ ul.detail-info {
 	width: 120px;
 	vertical-align: middle;
 }
-
 .your-comment-right {
 	display: table-cell;
 	vertical-align: middle;
 }
-
 .your-comment-right textarea {
 	margin-top: 2px;
 	width: 360px;
