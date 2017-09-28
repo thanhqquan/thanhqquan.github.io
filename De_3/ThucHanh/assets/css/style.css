@@ -1,7 +1,46 @@
 @charset "utf-8";
-
 body {
+	font: Time New Roman;
+	padding: 0;
+	margin: 0;
 }
-#container {
+#container { overflow: auto; }
+ul {
+	list-style-type: none;
+}
+.dotted-top { border-top: dotted 1px; }
+/*header element*/
+.header {
+	position: relative;
+	height: 349px;
+	background: url('../../img/fill_header.jpg') left bottom no-repeat;
+}
+.logo {
+	background: url('../../img/logo.jpg') no-repeat;
+	width: 353px;
+}
+.menu li {
+	color: white;
+	text-align: center;
+	float: left;
+	margin-right: 5px;
+}
+/*left-content element*/
+.left-content {
 	overflow: auto;
+	width: 15%;
+	padding: 5px;
+	float: left;
 }
+.left-content ul {
+	list-style-image: url(../../img/arr.gif);
+}
+/*right-content element*/
+.right-content {
+	width: 30%;
+}
+.right-content a:before {
+	content: url(../../img/arr_1.gif);
+	margin-right: 5px;
+}
+/*footer element*/
