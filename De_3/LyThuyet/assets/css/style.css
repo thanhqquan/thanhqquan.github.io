@@ -1,4 +1,4 @@
-@charset="utf-8";
+@charset "utf-8";
 body {
 	background-color: black;
 	font-family: Arial;
@@ -40,8 +40,8 @@ a { color: gray; }
 .info p {
 	line-height: 15px;
     letter-spacing: .4px;
-	margin-bottom: 0px;
-	margin-top: 0px;
+	margin-bottom: 0;
+	margin-top: 0;
 }
 /*under-info*/
 .under-info {
@@ -49,7 +49,7 @@ a { color: gray; }
 	margin-bottom: 20px;
 }
 .under-info p {
-	margin-top: 5px;
+	margin-top: 0;
 	margin-bottom: 15px;
 }
 /*bottom left part*/
@@ -58,12 +58,12 @@ a { color: gray; }
 	padding-left: 8px;
 	list-style-image: url(../../img/list2.gif);
 	column-count: 2;
-	column-gap: 0px;
+	column-gap: 0;
 	line-height: 25px;
 	margin-top: 15px;
 }
 .bottom-left-part h4 {
-	margin-bottom: 0px;
+	margin-bottom: 0;
 	letter-spacing: -.3px;
 }
 /*more-info element*/
