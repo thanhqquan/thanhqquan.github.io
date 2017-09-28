@@ -1,4 +1,4 @@
-@charset="utf-8";
+@charset "utf-8";
 body {
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	background: #2D2F35;
@@ -14,6 +14,7 @@ p {
 	color: white;
 	margin: 0 0 45px 0;
 	font-size: smaller;
+	line-height: 15px;
 }
 h2 { margin-top: 0px; }
 h3 { margin-top: 0px; }
@@ -27,13 +28,15 @@ h3 { margin-top: 0px; }
 .banner {
 	background-image: url(../../img/bg_home_intro.gif);
 	padding: 0 10% 0 10%;
-	float: left;
 	border-bottom: 1px solid #474a51;
+	overflow: auto;
 }
 .banner-left {
 	float: left;
 	width: 39%;
+	margin-bottom: 12px;
 }
+.banner-left p { line-height: 15px; }
 .banner-right {
 	float: left;
 	position: absolute;
@@ -41,7 +44,7 @@ h3 { margin-top: 0px; }
 }
 /*menu element*/
 .menu {
-	padding: 20px 0 10px 0;
+	padding: 20px 0 0 0;
 	border-bottom: 1px solid #474a51;
 }
 .menu ul {
@@ -56,12 +59,11 @@ h3 { margin-top: 0px; }
 }
 .menu-number {
 	position: absolute;
-	padding-left: 188px;
-	padding-top: 2px;
+	padding: 2px 0 0 188px;
 }
 /*content element*/
 .content {
-	padding: 10px 12% 0 10%;
+	padding: 5px 12% 0 10%;
 	border-bottom: 1px solid #474a51;
 	float: left;
 }
@@ -84,17 +86,19 @@ h3 { margin-top: 0px; }
 	font-size: 20px;
 	margin-bottom: 0;
 }
-.content-right h2 { font-size: 20px; }
-.content-left p {
-	margin-top: 5px;
-	letter-spacing: -0.04px;
+.content-right h2 {
+	font-size: 20px;
+	margin-bottom: 40px;
 }
+.content-left p { letter-spacing: -0.04px; }
 .content-right p {
 	letter-spacing: -0.04px;
+	margin-bottom: 5px;
 }
 /*footer element*/
 .footer {
 	background: url(../../img/bg_footer.gif) center no-repeat #24262a;
 	text-align: center;
-	height: 110px;
+	height: 125px;
 }
+.footer p { margin-left: -20px; }
