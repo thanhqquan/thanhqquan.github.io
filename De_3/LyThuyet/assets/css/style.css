@@ -24,7 +24,7 @@ a { color: gray; }
 /*left-part element*/
 .left-part {
 	width: 33%;
-	padding: 2px 30px 60px 60px;
+	padding: 2px 30px 50px 60px;
 	float: left;	
 }
 .top-left-part {
@@ -45,12 +45,14 @@ a { color: gray; }
 }
 /*under-info*/
 .under-info {
-	padding-left: 15px;
+	padding-left: 20px;
 	margin-bottom: 20px;
 }
 .under-info p {
 	margin-top: 0;
 	margin-bottom: 15px;
+	letter-spacing: .3px;
+	font-size: 11px;
 }
 /*bottom left part*/
 .bottom-left-part .info { padding-left: 15px; }
@@ -92,7 +94,7 @@ a { color: gray; }
 	width: 200px;
 }
 .right-part .top-dotted { padding-top: 30px; }
-.right-part-info { margin: 15px 0 50px 12px; }
+.right-part-info { margin: 15px 0 43px 12px; }
 .right-part-info h4 { margin-bottom: 0; }
 .p-top {
 	font-size: 12px;
