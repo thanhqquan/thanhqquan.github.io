@@ -9,7 +9,7 @@ body {
 	background-color: #e6f3fb;
 	margin: 0 auto;
 	width: 300px;
-	padding: 3px 10px 0 10px;
+	padding: 3px 10px 20px 10px;
 }
 ul {
 	list-style-type: none;
@@ -17,7 +17,12 @@ ul {
 }
 p { margin: 0; }
 b { color: #0a6395; }
+a { color: #0a6395; }
 .clear { clear: both; }
+.horizontal {
+	margin: 8px 0 5px 0;
+	border-bottom: 1px solid #DADEE0;
+}
 /*Blogroll element*/
 .info {
 	border-top: 3px solid #ffa500;
@@ -38,59 +43,84 @@ b { color: #0a6395; }
 	margin-right: 10px;
 }
 .blogroll img {
-	width: 160px;
+	width: 150px;
 	height: 80px;
 	margin: 1px 1px -3px 1px;
 }
-.blogroll-info p {
-	font-size: 12px;
-}
-.list ul {
+.blogroll-info p { font-size: 12px; }
+.blogroll-list ul {
 	margin: 0 0 0 -40px;
 	font-size: 12px;
 }
-.list li {
+.blogroll-list li {
 	background-color: #faf0bf;
 	padding: 8px;
 	border-bottom: 1px solid white;
 }
 /*Horoscopes element*/
-.horoscopes {
-	padding: 10px 0 0 0;
-}
-.horoscopes b {
-	color: black;
-}
-.horoscopes-info {
-	margin-top: 10px;
-}
+.horoscopes { padding: 10px 0 0 0; }
+.horoscopes b { color: black; }
+.horoscopes-info { margin: 10px 0 5px 0; }
 .date {
 	color: gray;
 	margin-bottom: 10px;
 }
-.horoscopes-image {
-	float: left;
-}
+.horoscopes-image { float: left; }
 .horoscopes-image img {
 	width: 80px;
 	height: 92px;
-	margin-right: 27px;
-	margin-bottom: 30px;
+	margin: 0 27px 30px 0;
 }
-/*footer*/
-.footer {
+/*horoscopes-footer element*/
+.horoscopes-footer {
 	font-size: 12px;
 	background-color: #F4F4EC;
+	margin-bottom: 25px;
 }
-.footer-info { float:left; }
-.footer-info-image {
-	float: right;
+.horoscopes-footer a {
+	font-weight: bold;
+	text-decoration: none;
 }
-.footer-info-image img{
-	height: 50px;
-	width: 50px;
-	
+.horoscopes-footer-info {
+	float:left;
+	margin: 10px 0 8px 20px;
+}
+.horoscopes-footer-image { float: right; }
+.horoscopes-footer-image img{
+	height: auto;
+	width: 70px;
 }
 /*Get-news-on-the-go element*/
-
-/*Competitions*/
+.get-news-info {
+	border-top: 3px solid #ffa500;
+	background: white;
+	margin-bottom: 0;
+	margin-right: 0;
+}
+.get-news-inner-info {
+	float: left;
+	width: 140px;
+	font-size: 12px;
+	margin-top: 25px;
+	margin-left: 20px;
+}
+.get-news-image { float: right; }
+.get-news-mobile { margin-top: 5px; }
+.get-news-info a {
+	font-weight: bold;
+	text-decoration: none;
+}
+.get-news-image img{ width: 122px; }
+.get-news-info p { width: 140px; }
+/*Competitions element*/
+.competitions-title { font-weight: bold; }
+.competitions {
+	font-size: 12px;
+	background: white;
+	border: 1px solid #DADEE0;
+}
+.competitions a { text-decoration: none; }
+.competitions ul {
+	padding-left: 8px;
+	margin: 8px 0 8px 0;
+}
