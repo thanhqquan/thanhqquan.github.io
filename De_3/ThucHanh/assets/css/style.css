@@ -97,10 +97,10 @@ ul { list-style-type: none; }
 	margin-bottom: 15px;
 }
 .dotted-top { margin-bottom: 15px; }
-/*footer element*/
-.footer {
+/*content-footer element*/
+.content-footer {
 	margin: 0 0 40px 65px;
 	padding: 10px;
 }
-.footer a { color: #63636e; }
-.footer p { padding: 10px; }
+.content-footer a { color: #63636e; }
+.content-footer p { padding: 10px; }
