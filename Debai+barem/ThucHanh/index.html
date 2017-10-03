@@ -17,47 +17,92 @@
                 <img src="img/news-1.png" alt="news-1">
               </div>
               <div class="more">
-                <img src="img/h3-confidential-showbuzz-bg.gif" alt="showbuzz">
                 <a href="#">MORE</a>
               </div>
-              <b>+ RUSSELL CROWE + MORE ...</b>
-              <div class="showbuzz-info"> RUSSELL Crowe's son to marry Keith &amp; Nicole's daughter, plus Renee Zellweger reveals her breast cancer scare</div>
+              <div class="summary">
+                <b>+ RUSSELL CROWE + MORE ...</b>
+                <br>
+                <p>RUSSELL Crowe's son to marry Keith &amp; Nicole's daughter, plus Renee Zellweger reveals her breast cancer scare</p>
+              </div>
             </div>
           </div>
           <div class="shooting-stars-container">
             <div class="title-news">
               DAILY CELEBRITY PICS
             </div>
-            <div class="shooting-stars-image">
+            <div class="info">
+              <div class="shooting-stars-image">
               <img src="img/news-2.png" alt="news-2">
+              </div>
+              <div class="more">
+                  <a href="#">MORE</a>
+                </div>
+              <div class="summary">
+                <b>+ BECKHAMS, CLAUDIA SHIFFER</b>
+                <br>
+                <p>VICTORIA and David Beckham dine out in NY, as top models Claudia Schiffer and Eva Herzigova hit the shops in Milan.</p>
+              </div>
             </div>
-            <div class="news-more">
-              <a href="#">MORE</a>
-            </div>
-            <b>+ BECKHAMS, CLAUDIA SHIFFER</b>
-            <div class="shooting-stars-info">VICTORIA and David Beckham dine out in NY, as top models Claudia Schiffer and Eva Herzigova hit the shops in Milan.</div>
           </div>
-          <div class="confidential-logo">
-            <img src="confidential-logo.gif" alt="confidential logo">
-          </div>
+          <div class="clear"></div>
         </div>
         <div class="top-movie-trailers">
           <div class="blue-title">TOP 3 MOVIE TRAILERS</div>
-          <div class="trailer-title">The House Bunny &#40;M&#41;</div>
-          <div class="trailer-info">
-            <div class="trailer-picture"><img src="0,,6254346,00.jpg" alt="The House Bunny"></div>
-            <div class="trailer-summary">When Playboy bunny Shelly is tossed out of the mansion, she falls in with the sorority girls from Zeta Alpha Zeta.</div>
-            <a href="#">Watch Now</a>
+          <div class="movie-trailer">
+            <button class="accordion-trailer-title" id="first-trailer-title">The House Bunny &#40;M&#41;</button>
+            <div class="trailer-info">
+              <div class="trailer-picture">
+                <img src="img/m_bunny.jpg" alt="The House Bunny">
+              </div>
+              <div class="trailer-summary">
+                <p>When Playboy bunny Shelly is tossed out of the mansion, she falls in with the sorority girls from Zeta Alpha Zeta.</p>
+                <a href="#">
+                  <img src="img/icon_1.png" alt="icon_1">
+                  <b>Watch Now</b>
+                </a>
+              </div>
+              <div class="clear"></div>
+            </div>
           </div>
-          <div class="trailer-title">Eagle Eye &#40;M&#41;</div>
-          <div class="trailer-title">Journey To the Centre Of The Earth &#40;PG&#41;</div>
+          <div class="movie-trailer">
+            <button class="accordion-trailer-title">Eagle Eye &#40;M&#41;</button>
+            <div class="trailer-info">
+              <div class="trailer-picture">
+                <img src="img/m_bunny.jpg" alt="The House Bunny">
+              </div>
+              <div class="trailer-summary">
+                <p>When Playboy bunny Shelly is tossed out of the mansion, she falls in with the sorority girls from Zeta Alpha Zeta.</p>
+                <a href="#">
+                  <img src="img/icon_1.png" alt="icon_1">
+                  <b>Watch Now</b>
+                </a>
+              </div>
+              <div class="clear"></div>
+            </div>
+          </div>
+          <div class="movie-trailer">
+            <button class="accordion-trailer-title">Journey To the Centre Of The Earth &#40;PG&#41;</button>
+            <div class="trailer-info">
+              <div class="trailer-picture">
+                <img src="img/m_bunny.jpg" alt="The House Bunny">
+              </div>
+              <div class="trailer-summary">
+                <p>When Playboy bunny Shelly is tossed out of the mansion, she falls in with the sorority girls from Zeta Alpha Zeta.</p>
+                <a href="#">
+                  <img src="img/icon_1.png" alt="icon_1">
+                  <b>Watch Now</b>
+                </a>
+              </div>
+              <div class="clear"></div>
+            </div>
+          </div>
           <div class="trailer-footer">
-            <span>Now Showing</span>
+            <b>Now Showing</b>
           </div>
         </div>
         <div class="movie-reviews">
           <div class="blue-title">MOVIE REVIEWS</div>
-          <div class="first-review">
+          <div class="title-movie-review">
             <div class="review-top">
               <div class="review-title">Eagle Eye</div>
               <div class="review-rate"></div>
@@ -67,7 +112,7 @@
             </div>
             <div class="review-summary">SHIA LaBeouf hits the ground running in Eagle Eye, an against the clock conspirasy thriller with ad timely technological t...</div>
           </div>
-          <div class="second-review">
+          <div class="title-movie-review">
             <div class="review-top">
               <div class="review-title">House Bunny</div>
               <div class="review-rate"></div>
@@ -141,5 +186,28 @@
         <a href="#">Back to top</a>
       </div>
     </div>
+    <script>
+      var acc = document.getElementsByClassName("accordion-trailer-title");
+      var i;
+      
+      for (i = 0; i < acc.length; i++)
+      {
+        acc[i].onclick = function()
+        {
+          /* Toggle between adding and removing the "active" class,
+          to highlight the button that controls the panel */
+          this.classList.toggle("active");
+          /* Toggle between hiding and showing the active panel */
+          var panel = this.nextElementSibling;
+          if (panel.style.display == "block")
+          {
+            panel.style.display = "none";
+          }
+          else {
+            panel.style.display = "block";
+          }
+        }
+      }
+    </script>
   </body>
 </html>

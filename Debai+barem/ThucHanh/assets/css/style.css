@@ -1,6 +1,130 @@
 @charset "utf-8";
 body {
+	font-family: sans-serif;
+	font-size: 9px;
+	margin: 0;
+	padding: 0;
 }
 #container {
+	margin: 15px 0 0 1px;
+	padding: 0;
+}
+a {
+	text-decoration: none;
+}
+.clear { clear: both; }
+/*daily-news element*/
+.daily-news {
+	display: flex;
+	background: url(../../img/confidential-logo.gif) no-repeat;
+	padding-bottom: 50px;
+	width: 570px;
+	background-position: 9px 245px;
+	background-size: auto 23px;
+}
+/*showbuzz-container element*/
+.showbuzz-container {
+	width: 285px;
+}
+.title-news {
+	background: url(../../img/confidential-heading-bg.gif);
+	color: white;
+	font-size: 13px;
+	font-weight: bold;
+	padding: 6px 8px 4px 8px;
+}
+.showbuzz-container .title-news {
+	border-right: 1px solid black;
+}
+.info {
+	padding: 5px 8px 8px 8px;
+}
+.showbuzz-container .info {
+	border-right: 1px dotted black;
+}
+.showbuzz-image img{
+	width: 266px;
 }
 /*more*/
+.more {
+	padding-bottom: 8px;
+	font-size: 11px;
+}
+.more a{
+	font-weight: bold;
+	color: black;
+	position: relative;
+	left: 217px;
+}
+.showbuzz-container .more {
+	background: url(../../img/h3-confidential-showbuzz-bg.gif) no-repeat;
+	background-size: 266px auto;
+}
+.sumarry b {
+	letter-spacing: -0.36px;
+}
+.summary p {
+	margin: 0;
+	letter-spacing: -0.05px;
+}
+/*shooting-stars-container element*/
+.shooting-stars-container {
+	width: 285px;
+}
+.shooting-stars-container .more {
+	background: url(../../img/h3-confidential-shootingstars-bg.gif) no-repeat;
+	background-size: 266px auto;
+}
+.shooting-stars-image img{
+	width: 266px;
+}
+/*top-movie-trailers element*/
+.top-movie-trailers {
+	width: 278px;
+	margin-left: 1px;
+}
+button.accordion-trailer-title {
+	background-image: url(../../img/h3-movie-trailers-bg.gif);
+	border: none;
+	color: #0189bb;
+	cursor: pointer;
+	width: 100%;
+	text-align: left;
+	font-family: arial;
+	font-weight: bold;
+}
+.blue-title {
+	background: url(../../img/h2-top-movie-trailers-bg.gif);
+	color: white;
+	font-size: 13px;
+	font-weight: bold;
+	padding: 7px 8px 4px 8px;
+}
+.trailer-info {
+	margin: 4px 2px;
+	display: none;
+}
+.trailer-picture img {
+	width: 87px;
+	float: left;
+	margin: 4px 5px 5px 2px;
+}
+.trailer-summary {
+	font-size: 11px;
+	overflow: auto;
+}
+.trailer-summary p {
+	margin: 0;
+}
+.trailer-summary img {
+	margin: 0px 1px -2px 0px;
+}
+#first-trailer-title {
+	display: none;
+}
+/*movie-reviews*/
+/*logo element*/
+/*search element*/
+/*menu element*/
+/*footer element*/
+/*back-to-top element*/
