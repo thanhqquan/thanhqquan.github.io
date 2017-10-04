@@ -35,6 +35,7 @@ a { color: #0a6395; }
 	color: black;
 	margin: 0;
 	letter-spacing: .8px;
+	padding-top: 1px;
 }
 .blogroll-image {
 	overflow: auto;
@@ -75,7 +76,7 @@ a { color: #0a6395; }
 .horoscopes-footer {
 	font-size: 12px;
 	background-color: #F4F4EC;
-	margin-bottom: 25px;
+	margin-bottom: 20px;
 }
 .horoscopes-footer a {
 	font-weight: bold;
@@ -85,7 +86,10 @@ a { color: #0a6395; }
 	float:left;
 	margin: 10px 0 8px 20px;
 }
-.horoscopes-footer-image { float: right; }
+.horoscopes-footer-image {
+	float: right;
+	height: 47px;
+}
 .horoscopes-footer-image img{
 	height: auto;
 	width: 70px;
@@ -104,7 +108,10 @@ a { color: #0a6395; }
 	margin-top: 25px;
 	margin-left: 20px;
 }
-.get-news-image { float: right; }
+.get-news-image {
+	float: right;
+	height: 116px;
+}
 .get-news-mobile { margin-top: 5px; }
 .get-news-info a {
 	font-weight: bold;
