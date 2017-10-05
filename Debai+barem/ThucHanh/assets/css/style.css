@@ -4,7 +4,7 @@ body {
 	font-size: 9px;
 	margin: 0;
 	padding: 0;
-	background: black
+	background: black;
 }
 #container {
 	margin: 0 auto;
@@ -80,9 +80,8 @@ a {	text-decoration: none; }
 /*top-movie-trailers element*/
 .top-movie-trailers {
 	width: 278px;
-	margin-left: 2px;
 	float: left;
-	margin-right: 16px;
+	margin: 0 16px 0 2px;
 }
 button.accordion-trailer-title {
 	background-image: url(../../img/h3-movie-trailers-bg.gif);
@@ -123,6 +122,7 @@ button.accordion-trailer-title {
 	font-size: 11px;
 	overflow: auto;
 }
+.trailer-summary b { color: #0189bb; }
 .trailer-summary p { margin: 0; }
 .trailer-summary img { margin: 0px 1px -2px 0px; }
 button.accordion-trailer-title:after {
@@ -133,8 +133,7 @@ button.accordion-trailer-title.active:after { content: url(../../img/open.jpg); 
 /*trailer-footer element*/
 .trailer-footer {
 	border-top: 1px dotted;
-	padding-bottom: 5px;
-	padding-left: 4px;
+	padding: 0 0 5px 4px;
 }
 .trailer-footer img { margin: 0px 1px -6px 0px }
 select {
@@ -142,8 +141,7 @@ select {
 	float: right;
 	height: 18px;
 	font-size: 11px;
-	margin-top: 3px;
-	margin-right: 3px;
+	margin: 3px 3px 0 0;
 }
 /*movie-reviews element*/
 .movie-reviews {
@@ -191,10 +189,7 @@ a.more-movies {
 	font-weight: lighter;
 }
 /*inner-right element*/
-.inner-right {
-	padding-left: 15px;
-	padding-top: 20px;
-}
+.inner-right { padding: 20px 0 0 15px; }
 /*search element*/
 .search button {
 	background: #a8407d;
@@ -213,8 +208,8 @@ a.more-movies {
 .menu ul { list-style-type: none; }
 .menu ul li {
 	float: left;
-	margin-left: 37px;
-	margin-right: 36px;
+	margin: 0 61px 0 7px;
+	width: 98px;
 }
 .menu p {
 	color: white;
@@ -228,8 +223,19 @@ a.more-movies {
 	background: white;
 	padding-top: 5px;
 }
-.footer-left { width: 790px; }
+.footer-left {
+	width: 870px;
+	position: relative;
+}
 .footer-right { width: 60px; }
-.footer-link a { color: #0189bb; }
+.footer-link a {
+	color: #0189bb;
+	letter-spacing: -0.1px;
+}
 /*footer-right element*/
-.footer-right a { color: #0189bb; }
+.footer-right a {
+	color: #0189bb;
+	position: absolute;
+	bottom: -298px;
+	right: 270px;
+}
