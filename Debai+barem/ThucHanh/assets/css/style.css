@@ -124,7 +124,7 @@ button.accordion-trailer-title {
 }
 .trailer-summary b { color: #0189bb; }
 .trailer-summary p { margin: 0; }
-.trailer-summary img { margin: 0px 1px -2px 0px; }
+.trailer-summary img { margin: 0 1px -2px 0; }
 button.accordion-trailer-title:after {
 	float: right;
 	content: url(../../img/close.jpg);
@@ -135,7 +135,7 @@ button.accordion-trailer-title.active:after { content: url(../../img/open.jpg); 
 	border-top: 1px dotted;
 	padding: 0 0 5px 4px;
 }
-.trailer-footer img { margin: 0px 1px -6px 0px }
+.trailer-footer img { margin: 0 1px -6px 0 }
 select {
 	width: 180px;
 	float: right;
@@ -169,7 +169,7 @@ select {
 	color: #0189bb;
 	font-size: 11px;
 }
-.review-trailer img { margin: 0px 0px -4px 0; }
+.review-trailer img { margin: 0 0 -4px 0; }
 /*review-footer element*/
 .review-footer {
 	margin-top: 4px;
