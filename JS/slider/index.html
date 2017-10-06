@@ -10,8 +10,26 @@
         <img src="img/App-Weather-icon.png" alt="icon">
         Weather
       </h1>
-      <div class="main-image"></div>
-      <div class="list-image"></div>
+      <div class="current-image">
+        <img src="img/At-the-lake.jpg" alt="At the lake">
+      </div>
+      <div class="current-image">
+        <img src="img/Mountains-tops-in-Crimea-(Russia).jpg" alt="Mountains tops in Crimea (Russia)">
+      </div>
+      <div class="current-image">
+        <img src="img/Somewhere-on-winter-top.jpg" alt="Somewhere on winter top">
+      </div>
+      <div class="current-image">
+        <img src="img/Track-type.jpg" alt="Track type">
+      </div>
+      <img class="button" id="left" src="img/left-arrow.png" alt="left arrow" onclick="adjacentImg(-1)">
+      <img class="button" id="right" src="img/right-arrow.png" alt="right arrow" onclick="adjacentImg(1)">
+      <img class="list-image" src="img/At-the-lake.jpg" alt="At the lake" onclick="currentSlide(0)">
+      <img class="list-image" src="img/Mountains-tops-in-Crimea-(Russia).jpg" alt="Mountains tops in Crimea (Russia)" onclick="currentSlide(1)">
+      <img class="list-image" src="img/Somewhere-on-winter-top.jpg" alt="Somewhere on winter top" onclick="currentSlide(2)">
+      <img class="list-image" src="img/Track-type.jpg" alt="Track type" onclick="currentSlide(3)">
     </div>
+    <noscript>no js</noscript>
+    <script type="text/javascript" src="js/javascript.js"></script>
   </body>
 </html>
