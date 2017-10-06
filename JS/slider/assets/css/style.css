@@ -1,13 +1,43 @@
 @charset "utf-8";
-body {
-}
 #container {
 	margin: 0 auto;
+	width: 100%;
+	text-align: center;
 }
+#left {
+	position: absolute;
+	top: 50%;
+	left: 20%;
+}
+#right {
+	position: absolute;
+	top: 50%;
+	right: 20%;
+}
+/*title element*/
 .title img{
 	width: 50px;
 	height: 50px;
+	margin-bottom: -10px;
 }
-h1 {
-	text-align: center;
+.title { color: blue; }
+/*current-image element*/
+.current-image { display: none; }
+.current-image img {
+	width: 670px;
+	height: 360px;
 }
+/*list-image element*/
+.list-image {
+	width: 75px;
+	height: 38px;
+	cursor: pointer;
+	display: inline-block;
+	transition: 5s;
+}
+.button {
+	cursor: pointer;
+	width: 50px;
+	height: 50px;
+}
+.active { border: 2px solid blue; }
