@@ -13,7 +13,7 @@ body {
 }
 a {	text-decoration: none; }
 .clear { clear: both; }
-.dotted-top { border-top: 1px dotted; }
+.dotted-top { border-top: 1px dotted #BCBFC0; }
 .solid-top { border-top: 1px solid #BCBFC0; }
 /*inner element*/
 .inner {
@@ -46,7 +46,7 @@ a {	text-decoration: none; }
 }
 .showbuzz-container .title-news { border-right: 1px solid black; }
 .info { padding: 5px 8px 8px 8px; }
-.showbuzz-container .info { border-right: 1px dotted black; }
+.showbuzz-container .info { border-right: 1px dotted #BCBFC0; }
 .showbuzz-image img{ width: 266px; }
 /*more element*/
 .more {
@@ -63,10 +63,10 @@ a {	text-decoration: none; }
 	background: url(../../img/h3-confidential-showbuzz-bg.gif) no-repeat;
 	background-size: 266px auto;
 }
-.sumarry b { letter-spacing: -0.36px; }
+.sumarry b { letter-spacing: -.36px; }
 .summary p {
 	margin: 0;
-	letter-spacing: -0.05px;
+	letter-spacing: -.05px;
 }
 /*shooting-stars-container element*/
 .shooting-stars-container { width: 285px; }
@@ -132,12 +132,13 @@ button.accordion-trailer-title:after {
 button.accordion-trailer-title.active:after { content: url(../../img/open.jpg); }
 /*trailer-footer element*/
 .trailer-footer {
-	border-top: 1px dotted;
-	padding: 0 0 5px 4px;
+	border-top: 1px dotted #BCBFC0;
+	padding: 0 0 6px 4px;
 }
-.trailer-footer img { margin: 0 1px -6px 0 }
+.trailer-footer { font-size: 10px; }
+.trailer-footer img { margin: 0 1px -6px 0; }
 select {
-	width: 180px;
+	width: 175px;
 	float: right;
 	height: 18px;
 	font-size: 11px;
@@ -172,8 +173,8 @@ select {
 .review-trailer img { margin: 0 0 -4px 0; }
 /*review-footer element*/
 .review-footer {
-	margin-top: 4px;
-	border-top: 1px dotted;
+	margin-top: 6px;
+	border-top: 1px dotted #BCBFC0;
 	padding-top: 4px;
 }
 .review-footer img { margin: 0 0 -3px 0; }
@@ -185,7 +186,7 @@ select {
 .more-movies { float: right; }
 a.more-movies {
 	color: black;
-	padding-top: 3px;
+	padding-top: 1px;
 	font-weight: lighter;
 }
 /*inner-right element*/
@@ -230,12 +231,12 @@ a.more-movies {
 .footer-right { width: 60px; }
 .footer-link a {
 	color: #0189bb;
-	letter-spacing: -0.1px;
+	letter-spacing: -.1px;
 }
 /*footer-right element*/
 .footer-right a {
 	color: #0189bb;
 	position: absolute;
-	top: 697px;
+	top: 687px;
 	right: 270px;
 }
