@@ -1,4 +1,25 @@
 @charset "utf-8";
-#container {
-	
+td {
+	width: 60px;
+	height: 30px;
+	cursor: pointer;
 }
+/*picked-day element*/
+#picked-day {
+	width: 150px;
+	height: 25px;
+	background: url(../../img/calendar-icon.jpg) no-repeat right;
+	background-size: 25px 25px;
+	border: 1px solid blue;
+}
+/*control element*/
+.control { text-align: center; }
+/*weekdays element*/
+.weekdays td {
+	color: red;
+	background: gray;
+	font-weight: bold;
+	text-align: center;
+	font-size: 24px;
+}
+/*days element*/
