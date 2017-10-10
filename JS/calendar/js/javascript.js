@@ -134,8 +134,7 @@ function pickDate() {
 			if (cellDay != "") {
 				this.style.border = "1px solid red";
 				pickedDay.value = cellDay + "/" + (curMonth) + "/" + curYear;
-			}
-			else {
+			} else {
 				this.style.border = "1px solid orange";
 			}
 		});
