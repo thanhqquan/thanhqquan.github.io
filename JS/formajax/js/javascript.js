@@ -12,6 +12,8 @@ function checkUsernameLength() {
 	
 	if (tbUsername.length < 8) {
 		errorUsername.innerHTML = "Username length min 8 letter";
+	} else {
+		errorUsername.innerHTML = "";
 	}
 }
 
@@ -24,11 +26,13 @@ function checkPasswordLength() {
 	
 	if (tbPassword.length < 8) {
 		errorPassword.innerHTML = "Password length min 8 letter";
+	} else {
+		errorPassword.innerHTML = "";
 	}
 }
 
 /**
- * Check input Email (format: is English,has "@", ".", may has ".", "_", "-" before "@")
+ * Check input Email (format: English, has "@", ".", may has ".", "_", "-" before "@")
  */
 function checkEmailFormat() {
 	var tbEmail = document.getElementsByName("email")[0].value; //value of textbox email
@@ -37,9 +41,7 @@ function checkEmailFormat() {
 	
 	if (!REGEX.test(tbEmail)) {
 		errorEmail.innerHTML = "Email wrong format";
-		alert("wrong");
 	} else {
-		errorEmail.innerHTML = "Correct format";
-		alert("correct");
+		errorEmail.innerHTML = "";
 	}
 }
