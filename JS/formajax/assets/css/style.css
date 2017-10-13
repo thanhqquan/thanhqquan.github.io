@@ -1,0 +1,20 @@
+@charset "utf-8";
+#container {
+	background: white;
+	width: 100%;
+}
+/*error elements*/
+.error { color: red; }
+.column-left {
+	text-align: right;
+	display: table-cell;
+	width: 80px;
+	vertical-align: middle;
+}
+.column-right {
+	width: 350px;
+	text-align: left;
+	display: table-cell;
+	padding: 0 0 10px 15px;
+}
+.form-row { display: table; }

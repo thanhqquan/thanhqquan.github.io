@@ -10,6 +10,8 @@ var listMonth = document.getElementById("month"); //month in drop-down list
 var listYear = document.getElementById("year"); //year in drop-down list
 var cell = document.getElementsByTagName("td"); //cell of table
 var pickedDay = document.getElementById("picked-day"); //day is picked (dd/mm/yyyy)
+var MINCELL = 13; //td has numerical order is 13
+var MAXCELL = 55; //td has numerical order is 55
 pickedDay.value = "dd/mm/yyyy";
 showCalendar(curYear, curMonth);
 showYear(); //show year in drop-down list
@@ -24,10 +26,10 @@ function showCalendar(year, month) {
 	var firstDate = new Date(year, month - 1, 1).getDay();//the first date of month
 	var lastDate = new Date(year, month, 0).getDate();//the last date of month
 	var day;
-	day = 13 + firstDate;
+	day = MINCELL + firstDate;
 	
-	//Change color of cells (from 13 to 54) to #2d2d2d, border 1px solid white
-	for (var i = 13; i < 55; i++) {
+	//Change color of cells (from MINCELL to MAXCELL) to #2d2d2d, border 1px solid white
+	for (var i = MINCELL; i < MAXCELL; i++) {
 		cell[i].innerHTML = "";
 		cell[i].style.backgroundColor = "#2d2d2d";
 		cell[i].style.border = "1px solid white";
@@ -124,9 +126,9 @@ function pickYear() {
  * Choose a day, display it with format dd/mm/yyyy in tag input has id="picked-day"
  */
 function pickDate() {
-	for (var i = 13; i < 55; i++) {
+	for (var i = MINCELL; i < MAXCELL; i++) {
 		cell[i].addEventListener("click", function() {
-			for (var j = 13; j < 55; j ++) {
+			for (var j = MINCELL; j < MAXCELL; j ++) {
 				cell[j].style.border = "1px solid white";
 			}
 			
