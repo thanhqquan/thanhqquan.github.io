@@ -4,7 +4,7 @@
  */
 
 /**
- * Check input Username (length >= 8)
+ * Check input Username (8<= length <= 35)
  */
 function checkUsernameLength() {
 	var tbUsername = document.getElementsByName("username")[0].value; //value of textbox username
@@ -12,6 +12,8 @@ function checkUsernameLength() {
 	
 	if (tbUsername.length < 8) {
 		errorUsername.innerHTML = "Username length min 8 letter";
+	} else if (tbUsername.length > 35) {
+		errorUsername.innerHTML = "Username length max 35 letter";
 	} else {
 		errorUsername.innerHTML = "";
 	}
