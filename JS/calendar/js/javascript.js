@@ -12,10 +12,11 @@ var cell = document.getElementsByTagName("td"); //cell of table
 var pickedDay = document.getElementById("picked-day"); //day is picked (dd/mm/yyyy)
 var MINCELL = 13; //td has numerical order is 13
 var MAXCELL = 55; //td has numerical order is 55
-pickedDay.value = "dd/mm/yyyy";
+//pickedDay.innerHTML = today.toISOString().slice(0,10);
+//pickedDay.value = today.toISOString().slice(0,10);
 showCalendar(curYear, curMonth);
 showYear(); //show year in drop-down list
-pickDate();
+pickDate(); //Choose a day, display it with format dd/mm/yyyy
 
 /**
  * Display the Calendar with Year and Month
@@ -23,8 +24,8 @@ pickDate();
  * @param {int} month Month in drop-down list
  */
 function showCalendar(year, month) {
-	var firstDate = new Date(year, month - 1, 1).getDay();//the first date of month
-	var lastDate = new Date(year, month, 0).getDate();//the last date of month
+	var firstDate = new Date(year, month - 1, 1).getDay(); //the first date of month
+	var lastDate = new Date(year, month, 0).getDate(); //the last date of month
 	var day;
 	day = MINCELL + firstDate;
 	
@@ -133,9 +134,18 @@ function pickDate() {
 			}
 			
 			var cellDay = this.innerHTML; //Day of cell is chosen
+
 			if (cellDay != "") {
 				this.style.border = "1px solid red";
-				pickedDay.value = cellDay + "/" + (curMonth) + "/" + curYear;
+				//pickedDay.innerHTML = cellDay + "-" + curMonth + "-" + curYear;
+				pickedDay.innerHTML = curYear + "-" + curMonth + "-" + cellDay;
+				//var parts = pickedDay.innerHTML.split('-');
+				//pickedDay.innerHTML = new Date (parts[2],parts[0],parts[1]);
+				//alert(pickedDay.innerHTML);
+				pickedDay.value = curYear + "-" + curMonth + "-" + cellDay;
+				var parts = pickedDay.value.split('-');
+				pickedDay.value = new Date (parts[2],parts[0],parts[1]);
+				alert(pickedDay.value);
 			} else {
 				this.style.border = "1px solid orange";
 			}
