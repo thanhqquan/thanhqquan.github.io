@@ -2,21 +2,19 @@
  * Calendar
  * @author quan.hnt3777@sinhvien.hoasen.edu.vn (Quan Huynh)
  */
-var today = new Date();
-var curDate = today.getDate(); //current Date
-var curMonth = today.getMonth() + 1; //current Month
-var curYear = today.getFullYear(); //current Year
-var listMonth = document.getElementById("month"); //month in drop-down list
-var listYear = document.getElementById("year"); //year in drop-down list
-var cell = document.getElementsByTagName("td"); //cell of table
-var pickedDay = document.getElementById("picked-day"); //day is picked (dd/mm/yyyy)
-var MINCELL = 13; //td has numerical order is 13
-var MAXCELL = 55; //td has numerical order is 55
-//pickedDay.innerHTML = today.toISOString().slice(0,10);
-//pickedDay.value = today.toISOString().slice(0,10);
-showCalendar(curYear, curMonth);
-showYear(); //show year in drop-down list
-pickDate(); //Choose a day, display it with format dd/mm/yyyy
+var TODAY = new Date();
+var CUR_DATE = TODAY.getDate(); // current Date
+var CUR_MONTH = TODAY.getMonth() + 1; // current Month
+var CUR_YEAR = TODAY.getFullYear(); // current Year
+var LIST_MONTH = document.getElementById("month"); // month in drop-down list
+var LIST_YEAR = document.getElementById("year"); // year in drop-down list
+var CELL = document.getElementsByTagName("td"); // cell of table
+var PICKED_DAY = document.getElementById("picked-day"); // day is picked (yyyy/mm/dd)
+var MINCELL = 13; // td has numerical order is 13
+var MAXCELL = 55; // td has numerical order is 55
+showCalendar(CUR_YEAR, CUR_MONTH);
+showYear(); // show year in drop-down list
+pickDate(); // Choose a day, display it with format yyyy/mm/dd
 
 /**
  * Display the Calendar with Year and Month
@@ -24,28 +22,28 @@ pickDate(); //Choose a day, display it with format dd/mm/yyyy
  * @param {int} month Month in drop-down list
  */
 function showCalendar(year, month) {
-	var firstDate = new Date(year, month - 1, 1).getDay(); //the first date of month
-	var lastDate = new Date(year, month, 0).getDate(); //the last date of month
+	var firstDate = new Date(year, month - 1, 1).getDay(); // the first week's day of month
+	var lastDate = new Date(year, month, 0).getDate(); // the last date of month
 	var day;
-	day = MINCELL + firstDate;
+	day = MINCELL + firstDate; // index of cell
 	
-	//Change color of cells (from MINCELL to MAXCELL) to #2d2d2d, border 1px solid white
+	// Change color of cells (from MINCELL to MAXCELL) to #2d2d2d, border 1px solid white
 	for (var i = MINCELL; i < MAXCELL; i++) {
-		cell[i].innerHTML = "";
-		cell[i].style.backgroundColor = "#2d2d2d";
-		cell[i].style.border = "1px solid white";
+		CELL[i].innerHTML = "";
+		CELL[i].style.backgroundColor = "#2d2d2d";
+		CELL[i].style.border = "1px solid white";
 	}
-	//Add number to cells and change color of cells to white
+	// Add number to cells and change color of cells to white
 	for (var i = 1; i <= lastDate; i++) {
-		cell[day].innerHTML = i;
-		cell[day].style.backgroundColor = "white";
+		CELL[day].innerHTML = i;
+		CELL[day].style.backgroundColor = "white";
 		day++;
 	}
 	curTime();
-	//Change color of cell, which is today
-	if (curYear === today.getFullYear() && curMonth === (today.getMonth() + 1)) {
-		var curDate = 12 + today.getDate();
-		cell[curDate].style.backgroundColor = "#00ace6";
+	// Change color of cell, which is TODAY
+	if (CUR_YEAR === TODAY.getFullYear() && CUR_MONTH === (TODAY.getMonth() + 1)) {
+		var CUR_DATE = 12 + TODAY.getDate();
+		CELL[CUR_DATE].style.backgroundColor = "#00ace6";
 	}	
 }
 
@@ -53,8 +51,8 @@ function showCalendar(year, month) {
  * Display current month and current year in drop-down list Month and Year
  */
 function curTime() {
-	listMonth.value = curMonth;
-	listYear.value = curYear;
+	LIST_MONTH.value = CUR_MONTH;
+	LIST_YEAR.value = CUR_YEAR;
 }
 
 /**
@@ -62,20 +60,20 @@ function curTime() {
  */
 function showYear() {
 	for (var i = 1970; i <= 2100; i++) {
-		listYear.innerHTML += "<option value='" + i + "'>"+ i +'</option>';
+		LIST_YEAR.innerHTML += "<option value='" + i + "'>"+ i +'</option>';
 	}
-	showCalendar(curYear, curMonth);
+	showCalendar(CUR_YEAR, CUR_MONTH);
 }
 
 /**
  * Check year less than 1970 or greater than 2100
  */
  function checkYear() {
-	if (curYear > 2100)	{
-		curYear = 2100;
+	if (CUR_YEAR > 2100)	{
+		CUR_YEAR = 2100;
 		alert("Year cannot be greater than 2100");
-	} else if (curYear < 1970) {
-		curYear = 1970;
+	} else if (CUR_YEAR < 1970) {
+		CUR_YEAR = 1970;
 		alert("Year cannot be less than 1970");
 	}
  }
@@ -85,16 +83,16 @@ function showYear() {
  * @param {int} n Ordinal number of a month
  */
 function adjacentMonth(n) {
-	curMonth += n;
-	if (curMonth < 1) {
-		curMonth = 12;
-		curYear -= 1;
-	} else if (curMonth > 12) {
-		curMonth = 1;
-		curYear += 1;
+	CUR_MONTH += n;
+	if (CUR_MONTH < 1) {
+		CUR_MONTH = 12;
+		CUR_YEAR -= 1;
+	} else if (CUR_MONTH > 12) {
+		CUR_MONTH = 1;
+		CUR_YEAR += 1;
 	}
 	checkYear();
-	showCalendar(curYear, curMonth);
+	showCalendar(CUR_YEAR, CUR_MONTH);
 }
 
 /**
@@ -102,50 +100,42 @@ function adjacentMonth(n) {
  * @param {int} n Ordinal number of a year
  */
 function adjacentYear(n) {
-	curYear += n;
+	CUR_YEAR += n;
 	checkYear();
-	showCalendar(curYear, curMonth);
+	showCalendar(CUR_YEAR, CUR_MONTH);
 }
 
 /**
  * Choose a month from drop-down list, show all days of that Month and Year from drop-down list
  */
 function pickMonth() {
-	curMonth = parseInt(listMonth.value);
-	showCalendar(curYear, curMonth);
+	CUR_MONTH = parseInt(LIST_MONTH.value);
+	showCalendar(CUR_YEAR, CUR_MONTH);
 }
 
 /**
  * Choose a year from drop-down list, show all days of that Month and Year from drop-down list
  */
 function pickYear() {
-	curYear = parseInt(listYear.value);
-	showCalendar(curYear, curMonth);
+	CUR_YEAR = parseInt(LIST_YEAR.value);
+	showCalendar(CUR_YEAR, CUR_MONTH);
 }
 
 /**
- * Choose a day, display it with format dd/mm/yyyy in tag input has id="picked-day"
+ * Choose a day, display it with format yyyy/mm/dd in tag input has id="picked-day"
  */
 function pickDate() {
 	for (var i = MINCELL; i < MAXCELL; i++) {
-		cell[i].addEventListener("click", function() {
+		CELL[i].addEventListener("click", function() {
 			for (var j = MINCELL; j < MAXCELL; j ++) {
-				cell[j].style.border = "1px solid white";
+				CELL[j].style.border = "1px solid white";
 			}
 			
-			var cellDay = this.innerHTML; //Day of cell is chosen
+			var cellDay = this.innerHTML; // Day of cell is chosen
 
 			if (cellDay != "") {
 				this.style.border = "1px solid red";
-				//pickedDay.innerHTML = cellDay + "-" + curMonth + "-" + curYear;
-				pickedDay.innerHTML = curYear + "-" + curMonth + "-" + cellDay;
-				//var parts = pickedDay.innerHTML.split('-');
-				//pickedDay.innerHTML = new Date (parts[2],parts[0],parts[1]);
-				//alert(pickedDay.innerHTML);
-				pickedDay.value = curYear + "-" + curMonth + "-" + cellDay;
-				var parts = pickedDay.value.split('-');
-				pickedDay.value = new Date (parts[2],parts[0],parts[1]);
-				alert(pickedDay.value);
+				PICKED_DAY.value = CUR_YEAR + "-" + CUR_MONTH + "-" + cellDay;
 			} else {
 				this.style.border = "1px solid orange";
 			}
