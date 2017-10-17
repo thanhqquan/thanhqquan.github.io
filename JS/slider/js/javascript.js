@@ -3,11 +3,10 @@
  * @author quan.hnt3777@sinhvien.hoasen.edu.vn (Quan Huynh)
  */
 
-//Variable of active image in list image
-var slideIndex = 0;
+var SLIDE_INDEX = 0; // Variable of active image in list image
 
-//Set default for the first slide
-showSlide(slideIndex);
+showSlide(slideIndex); // Set default for the first slide
+
 /**
  * Display image, change image after 3s
  * @param {int} n Ordinal number of an image in list image
@@ -20,6 +19,7 @@ function showSlide(n) {
 	var i;
 	var slide = document.getElementsByClassName("slide");
 	var listImage = document.getElementsByClassName("list-image");
+	
 	//Move from the last slide to the first (n = 4)
 	if (n >= slide.length) {
 		slideIndex = 0;
@@ -28,7 +28,7 @@ function showSlide(n) {
 	if (n < 0) {
 		slideIndex = slide.length - 1;
 	}
-	//
+	
 	for (i = 0; i < slide.length; i++) {
 		slide[i].style.display = "none";
 	}
