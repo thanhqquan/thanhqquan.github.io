@@ -35,7 +35,7 @@ function checkPasswordLength($password) {
  * @param (email)
  */
 function checkEmailFormat($email) {
-    if (!preg_match("/^([a-z0-9\._-]+)@([a-z]+)\.([a-z\.]{2,6})$/",$email)) {
+    if (!preg_match("/^([a-z0-9\._-]+)@([a-z]+)\.([a-z\.]{2,6})$/", $email)) {
         return false;
     } else {
         return true;
