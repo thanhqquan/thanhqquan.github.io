@@ -20,7 +20,8 @@ if ($result->num_rows > 0) {
         $sql = "INSERT INTO user(username,password,email,birthday) VALUES ('". $username. "', '". md5($password). "', '". $email. "', '". $birthday. "');";
         
         if ($conn->query($sql) === true) {
-            echo "Username ". $username. " is created successfully";
+            echo "Username ". $username. " is created successfully.<br><a href='index.html'>Create another account</a>";
+            
         } else {
             echo "Cannot add to Database";
         }
