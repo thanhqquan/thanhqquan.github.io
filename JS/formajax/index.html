@@ -9,13 +9,13 @@
   </head>
   <body>
     <div id="container">
-      <form method="post" action="Add_Db.php">
+      <form method="post">
         <div class ="form-row">
           <div class="column-left">
             <b>Username:</b>
           </div>
           <div class="column-right">
-            <input type="text" name="username" onchange="checkUsernameLength()">
+            <input type="text" name="username" id="username" onchange="checkUsernameLength()">
             <span class="error" id="error-username"></span>
           </div>
         </div>
@@ -24,7 +24,7 @@
             <b>Password:</b>
           </div>
           <div class="column-right">
-            <input type="password" name="password" onchange="checkPasswordLength()">
+            <input type="password" name="password" id="password" onchange="checkPasswordLength()">
             <span class="error" id="error-password"></span>
           </div>
         </div>
@@ -33,7 +33,7 @@
             <b>Email:</b>
           </div>
           <div class="column-right">
-            <input type="text" name="email" onchange="checkEmailFormat()">
+            <input type="text" name="email" id="email" onchange="checkEmailFormat()">
             <span class="error" id="error-email"></span>
           </div>
         </div>
@@ -43,9 +43,9 @@
           </div>
           <div class="column-right">
             <div class="calendar-header">
-              <input type="text" id="picked-day" name="birthday" readonly="">
+              <input type="text" name="birthday" id="picked-day" onchange="checkBirthdayFormat()" readonly="" onclick="presentCalendar()">
             </div>
-            <table>
+            <table id="table-calendar">
               <tbody>
                 <tr class="control">
                   <td class="year" onclick="adjacentYear(-1)">&lt;&lt;</td>
@@ -137,16 +137,18 @@
                 </tr>
               </tbody>
             </table>
+            <span class="error" id="error-birthday"></span>
           </div>
         </div>
         <div class="form-row">
           <div class="column-left"></div>
           <div class="column-right">
-            <input type="submit" name="submit" value="SUBMIT">
-            <input type="button" value="REFRESH" onClick="window.location.href=window.location.href">
+            <input type="submit" name="submit" value="SUBMIT" onclick="submitForm()">
+            <input type="button" value="REFRESH" onclick="window.location.href=window.location.href">
           </div>
         </div>
       </form>
+      <span id="status"></span>
     </div>
     <script type="text/javascript" src="../calendar/js/javascript.js"></script>
     <script type="text/javascript" src="js/javascript.js"></script>

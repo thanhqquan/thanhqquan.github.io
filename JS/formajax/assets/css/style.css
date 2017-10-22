@@ -11,10 +11,17 @@
 	width: 80px;
 	vertical-align: middle;
 }
+/*comlumn-right elements*/
 .column-right {
-	width: 350px;
+	width: 500px;
 	text-align: left;
 	display: table-cell;
 	padding: 0 0 10px 15px;
 }
+table {
+	display: none;
+	border: 1px solid black;
+}
+td { width: 65px; }
+.birthday { float: left; }
 .form-row { display: table; }

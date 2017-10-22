@@ -11,7 +11,7 @@ $birthday = $_POST["birthday"];
  * @param (username)
  */
 function checkUsernameLength($username) {
-    if ((strlen($username) < 8) && (strlen($username) > 35)) {
+    if ((strlen($username) < 8) || (strlen($username) > 35)) {
         return false;
     } else {
         return true;
