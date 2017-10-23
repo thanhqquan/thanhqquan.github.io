@@ -14,7 +14,6 @@ if ($result->num_rows > 0) {
     // Check input of username, password, email, birthday
     if (checkUsernameLength($username) === false || checkPasswordLength($password) === false || checkEmailFormat($email) === false || checkBirthday($birthday) === false) {
         echo "Your username, password, email or birthday are not correct format.";
-        //return true;
     } else {
         // Add record to Database
         $sql_insert = "INSERT INTO user(username,password,email,birthday) VALUES ('". $username. "', '". md5($password). "', '". $email. "', '". $birthday. "');";

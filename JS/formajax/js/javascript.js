@@ -97,6 +97,7 @@ function presentCalendar() {
  */
 function submitForm() {
 	var xhttp; // XMLHttpRequest
+	document.getElementById("status").innerHTML = ""; // status clear when clicked button "SUBMIT"
 	var tbUsername = document.getElementById("username").value;
 	var tbPassword = document.getElementById("password").value;
 	var tbEmail = document.getElementById("email").value;
@@ -120,10 +121,7 @@ function submitForm() {
 		// Send data to Add_Db.php
 		xhttp.open("POST", "Add_Db.php", true);
 		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-		document.getElementById("status").innerHTML = "Processing...";
+		document.getElementById("status").innerHTML = "Processing..."; // status when form sending to server
 		xhttp.send(data);
-	} else {
-		//document.getElementById("status").innerHTML = "Fail.";
-		return false;
-	}
+	} else { return false; }
 }

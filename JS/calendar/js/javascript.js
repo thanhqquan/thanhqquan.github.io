@@ -16,6 +16,7 @@ showCalendar(CUR_YEAR, CUR_MONTH);
 showYear(); // show year in drop-down list
 pickDate(); // Choose a day, display it with format yyyy/mm/dd
 PICKED_DAY.value = CUR_YEAR + "-" + CUR_MONTH + "-" + CUR_DATE; // set default value for picked-day
+
 /**
  * Display the Calendar with Year and Month
  * @param {int} year Year in drop-down list
@@ -27,11 +28,11 @@ function showCalendar(year, month) {
 	var day;
 	day = MINCELL + firstDate; // index of cell
 	
-	// Change color of cells (from MINCELL to MAXCELL) to #2d2d2d, border 1px solid white
+	// Change color of cells (from MINCELL to MAXCELL) to #2d2d2d, border 1px solid #2d2d2d
 	for (var i = MINCELL; i < MAXCELL; i++) {
 		CELL[i].innerHTML = "";
 		CELL[i].style.backgroundColor = "#2d2d2d";
-		CELL[i].style.border = "1px solid white";
+		CELL[i].style.border = "1px solid #2d2d2d";
 	}
 	// Add number to cells and change color of cells to white
 	for (var i = 1; i <= lastDate; i++) {
@@ -127,9 +128,9 @@ function pickYear() {
 function pickDate() {
 	for (var i = MINCELL; i < MAXCELL; i++) {
 		CELL[i].addEventListener("click", function() {
-            // Change color of all cells's border to white
+            // Change color of all cells's border to #2d2d2d
 			for (var j = MINCELL; j < MAXCELL; j ++) {
-				CELL[j].style.border = "1px solid white";
+				CELL[j].style.border = "1px solid #2d2d2d";
 			}
 			
 			var cellDay = this.innerHTML; // Day of cell is chosen
@@ -137,7 +138,7 @@ function pickDate() {
 			if (cellDay != "") {
 				this.style.border = "1px solid red";
 				PICKED_DAY.value = CUR_YEAR + "-" + CUR_MONTH + "-" + cellDay;
-                PICKED_DAY.innerHTML = CUR_YEAR + "-" + CUR_MONTH + "-" + cellDay;
+				document.getElementById("table-calendar").style.display = "none"; // Hide Calendar
 			} else {
 				this.style.border = "1px solid orange";
 			}
