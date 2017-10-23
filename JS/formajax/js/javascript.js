@@ -7,7 +7,7 @@
  * Check input Username (8<= length <= 35)
  */
 function checkUsernameLength() {
-	var tbUsername = document.getElementsByName("username")[0].value; //value of textbox username
+	var tbUsername = document.getElementById("username").value; // value of textbox username
 	var errorUsername = document.getElementById("error-username");
 	
 	if (tbUsername.length == 0) {
@@ -29,7 +29,7 @@ function checkUsernameLength() {
  * Check input Password (length >= 8)
  */
 function checkPasswordLength() {
-	var tbPassword = document.getElementsByName("password")[0].value; //value of textbox password
+	var tbPassword = document.getElementById("password").value; // value of textbox password
 	var errorPassword = document.getElementById("error-password");
 	
 	if (tbPassword == 0) {
@@ -48,7 +48,7 @@ function checkPasswordLength() {
  * Check input Email (format: English, has "@", ".", may has ".", "_", "-" before "@")
  */
 function checkEmailFormat() {
-	var tbEmail = document.getElementsByName("email")[0].value; //value of textbox email
+	var tbEmail = document.getElementById("email").value; // value of textbox email
 	var errorEmail = document.getElementById("error-email");
 	var REGEX = /^([a-z0-9\._-]+)@([a-z]+)\.([a-z\.]{2,6})$/;
 	
@@ -68,13 +68,12 @@ function checkEmailFormat() {
  * Check input Birthday (birthday <= now)
  */
 function checkBirthdayFormat() {
-	//var tbBirthday = document.getElementsByName("birthday")[0].value; //value of birthday
-	var tbBirthday = document.getElementById("picked-day")[0].value;
+	var tbBirthday = document.getElementById("picked-day").value; // value of birthday
 	var myDate = new Date(tbBirthday);
-	var errorBirthday = document.getElementById("error-birthday"); 
 	var now = new Date();
 	var calendar = document.getElementById("table-calendar");
 	calendar.style.display = "none";
+	var errorBirthday = document.getElementById("error-birthday"); 
 	
 	if (myDate > now) {
 		errorBirthday.innerHTML = "Birthday must be on or before today";
@@ -97,7 +96,13 @@ function presentCalendar() {
  * Validate information before submit to server 
  */
 function submitForm() {
-	var xhttp;
+	var xhttp; // XMLHttpRequest
+	document.getElementById("status").innerHTML = ""; // status clear when clicked button "SUBMIT"
+	var tbUsername = document.getElementById("username").value;
+	var tbPassword = document.getElementById("password").value;
+	var tbEmail = document.getElementById("email").value;
+	var tbBirthday = document.getElementById("picked-day").value;
+	var data = "username=" + tbUsername + "&password=" + tbPassword + "&email=" + tbEmail + "&birthday=" + tbBirthday;
 	
 	if (checkUsernameLength() && checkPasswordLength() && checkEmailFormat() && checkBirthdayFormat()) {
 		if (window.XMLHttpRequest) {
@@ -109,12 +114,14 @@ function submitForm() {
 		}
 		xhttp.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
-				console.log(xhttp.responseText);
+				document.getElementById("status").innerHTML = xhttp.responseText;
 			}
 		};
 		
+		// Send data to Add_Db.php
 		xhttp.open("POST", "Add_Db.php", true);
-		xhttp.send();
-	} else alert("Fail. Your username, password, email or birthday are not correct format.");
-	return false;
+		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		document.getElementById("status").innerHTML = "Processing..."; // status when form sending to server
+		xhttp.send(data);
+	} else { return false; }
 }

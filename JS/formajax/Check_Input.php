@@ -43,11 +43,14 @@ function checkEmailFormat($email) {
 }
 
 /**
- * Check input Birthday
+ * Check input Birthday (Birthday <= curDate)
  * @param (birthday)
  */
 function checkBirthday($birthday) {
-    if (!isset($birthday)) {
+    $curDate = strtotime(date("Y-m-d"));
+    $birthday = strtotime($birthday);
+    
+    if ($birthday > $curDate) {
         return false;
     } else {
         return true;
