@@ -10,23 +10,19 @@ var SCORE = 0;
 var HEART = 5;
 var SPEED = 1;
 var BOOM = 3;
-var SPEED_X = 1;
-var SPEED_Y = 1;
-
+var SPEED = 1;
 /**
  * Draw background
  */
-//Map (width: 500, height: 500) is under Menu (width: 500, height: 100)
+// Map (width: 500, height: 500) is under Menu (width: 500, height: 100)
 const MIN_W = 0;
 const MIN_H = 100;
 var CANVAS = document.getElementById("canvas");
 CANVAS.width = 500;
 var MAP_W = CANVAS.width - MON_SIZE;
-console.log(MAP_W);
 CANVAS.height = 500 + MIN_H;
 var MAP_H = CANVAS.height - MON_SIZE;
 var HALF_MAP_W = (MAP_W + MIN_W) / 2;
-console.log(HALF_MAP_W);
 var HALF_MAP_H = (MAP_H + MIN_H) / 2;
 var context = CANVAS.getContext("2d");
 var BG_IMG = new Image(); // background image
@@ -45,12 +41,14 @@ for (var i = 0; i<= (monMaxNum - 1); i++) {
 	monImg[i].src = "img/monster" + (i + 1) + ".png";
 }
 /**
- * Monster's information: image of monster, coordinate(cx, cy), direction point(dirX, dirY), monster is alive
+ * Monster's information: image of monster, coordinate(x, y), direction point(dirX, dirY), monster is alive (= 1) or not (= 0) 
  */
-function monster(img, x, y, dirX, dirY, isAlive) {
+function monster(img, x, y, startX, startY, dirX, dirY, isAlive) {
 	this.img = img;
 	this.x = x;
 	this.y = y;
+	this.startX = startX;
+	this.startY = startY;
 	this.dirX = dirX;
 	this.dirY = dirY;
 	this.isAlive = isAlive;
@@ -77,25 +75,27 @@ position[7] = new startPosition(HALF_MAP_W, MAP_H); // middle bottom
 position[8] = new startPosition(MAP_W, MAP_H); // right bottom
 
 var monsters = [];
+
 /**
- * Load Game
+ * Load Game on browser
  */
 function loadGame() {
 	drawForm();
+	createMonster();
 	drawMonster();
 	reqAnimation(loadGame);
 }
 
 /**
- * Draw monster: random image and position
+ * Create, push a monster into array
  */
-function drawMonster() {
+function createMonster() {
 	var iImg = Math.floor(Math.random() * monImg.length); // random image's index
 	var iPos = Math.floor(Math.random() * position.length); // random start position's index
 	
 	switch (iPos) {
 		default: // monster's start position is not center
-			var mon = new monster(monImg[iImg], position[iPos].x, position[iPos].y, position[4].x, position[4].y, 1);
+			var mon = new monster(monImg[iImg], position[iPos].x, position[iPos].y, position[iPos].x, position[iPos].y,position[4].x, position[4].y, 1);
 			monsters.push(mon);
 			break;
 		case 4: // monster's start position is center
@@ -105,20 +105,21 @@ function drawMonster() {
 				i = Math.floor(Math.random() * position.length);
 			}
 			
-			var mon = new monster(monImg[iImg], position[iPos].x, position[iPos].y, position[i].x, position[i].y, 1);
+			var mon = new monster(monImg[iImg], position[iPos].x, position[iPos].y, position[iPos].x, position[iPos].y, position[i].x, position[i].y, 1);
 			monsters.push(mon);
 			break;
 	}
-	// var mon = new monster(monImg[iImg], position[iPos].x, position[iPos].y, position[4].x, position[4].y, 1);
-	
-	
-	// context.drawImage(monImg[iImg], position[iPos].x, position[iPos].y, MON_SIZE, MON_SIZE);
-	
-	// for (var i = 0; i <= monsters.length; i++) {
-		// context.drawImage(monsters[i].img, monsters[i].x, monsters[i].y, MON_SIZE, MON_SIZE);
-		// monsters[i].move();
+}
+
+/**
+ * Draw monster: random image and position
+ */
+function drawMonster() {	
+	var j;
+	// for (j = 0; j < monsters.length; j++) {
+		// context.drawImage(monsters[j].img, monsters[j].x, monsters[j].y, MON_SIZE, MON_SIZE);
+		// monsters[j].move();
 	// }
-	
 	context.drawImage(monsters[0].img, monsters[0].x, monsters[0].y, MON_SIZE, MON_SIZE);
 	monsters[0].move();
 }
@@ -135,81 +136,59 @@ function drawForm() {
 	context.fillText("Score: " + SCORE, 10, 30);
 	context.fillText("Heart: " + HEART, 10, 50);
 	context.fillText("Speed: " + SPEED, 10, 70);
-	
-	for (var i = 0; i <= 8; i++) {
-		context.drawImage(monImg[i], position[i].x, position[i].y, MON_SIZE, MON_SIZE);
-	}
+	context.fillText(BOOM, HALF_MAP_W, 70);
 }
 
 /**
  * Move monster
  */
 monster.prototype.move = function() {
-	
-	
-	// if (this.x == (this.y - MIN_H)) { // monster has start position at 0 and 8
-		// if (this.x < HALF_MAP_W) {
-			// this.x += SPEED_X;
-			// this.y += SPEED_Y;
-		// } else {
-			// this.x -= SPEED_X;
-			// this.y -= SPEED_Y;
-		// }
-	// } else if (this.x == HALF_MAP_W) { // monster has start position at 1 and 7
-		// if (this.y < HALF_MAP_H) {
-			// this.y += SPEED_Y;
-		// } else {
-			// this.y -= SPEED_Y;
-		// }
-	// } else if ((this.x + this.y) == MAP_H) { // monster has start position at 3 and 6
-		// if (this.y > HALF_MAP_H) {
-			// this.x += SPEED_X;
-			// this.y -= SPEED_Y;
-		// } else {
-			// this.x -= SPEED_X;
-			// this.y += SPEED_Y;
-		// }
-	// } else if (this.y == HALF_MAP_H) { // monster has start position at 4 and 6
-		// if (this.x < HALF_MAP_W) {
-			// this.x += SPEED_X;
-		// } else {
-			// this.x -= SPEED_X;
-		// }
-	// }
-
 	if (this.x == this.dirX && this.y == this.dirY) {
-		var sign = -1;
-	} else var sign = 1;
+		this.dirX = this.startX;
+		this.dirY = this.startY;
+	}
 	
 	if (this.x < this.dirX) {
-		this.x += SPEED_X * sign;
+		this.x += SPEED;
 	} else if (this.x > this.dirX) {
-		this.x -= SPEED_X * sign;
+		this.x -= SPEED;
 	}
 	
 	if (this.y < this.dirY) {
-		this.y += SPEED_Y * sign;
+		this.y += SPEED;
 	} else if (this.y > this.dirY) {
-		this.y -= SPEED_Y * sign;
+		this.y -= SPEED;
 	}
+}
 
-	// if (this.x > this.dirX) {
-		// this.x += SPEED_X * sign;
-	// } else if (this.x > this.dirX) {
-		// this.x -= SPEED_X * sign;
-	// }
+CANVAS.addEventListener("mousedown", mouseDown, false);
+/**
+ * Event Click: click Menu or Map
+ */
+function mouseDown(e) {
+	var mouseX = e.pageX - CANVAS.offsetLeft;
+	var mouseY = e.pageY - CANVAS.offsetTop;
 	
-	// if (this.y < this.dirY) {
-		// this.y += SPEED_Y * sign;
-	// } else if (this.y > this.dirY) {
-		// this.y -= SPEED_Y * sign;
-	// }
+	if (mouseY < MIN_H) {
+		clickMenu(mouseX, mouseY);
+	}
 }
- /*
-function move() {
-	x += SPEED_X;
-	y += SPEED_Y;
-	
-	if ()
+
+/**
+ * Click menu: Boom, Pause, Restart 
+ * @param mouseX: coordinate x
+ * @param mousey: coordinate y
+ */
+function clickMenu(mouseX, mouseY) {
+	// Boom
+	if (mouseX >= 250 && mouseX <= (250 + BTN_SIZE) && mouseY >= 0 && mouseY <= BTN_SIZE) {
+		for (i = 0; i < monsters.length; i++) {
+			if (monsters[i].isAlive == 1) {
+				SCORE += 10;
+			}
+		}
+		BOOM--;
+		monsters = [];
+		drawForm();
+	}
 }
-*/
