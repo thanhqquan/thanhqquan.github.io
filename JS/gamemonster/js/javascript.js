@@ -103,6 +103,7 @@ function loadGame() {
     drawForm();
     if (STATUS == 1) {
         createMonster();
+        // setInterval(createMonster, 1000 / 60);
         drawMonster();
         moveMonster();
     } else if (STATUS == 2) {
@@ -112,6 +113,7 @@ function loadGame() {
         context.fillText("GAME OVER", HALF_MAP_W, HALF_MAP_H);
     }
     reqAnimation(loadGame);
+    // setTimeout(loadGame, 1000 / 60);
 
     // drawForm();
     // if (STATUS == 1) {
@@ -138,7 +140,7 @@ function loadGame() {
 }
 
 /**
- * Create, push a monster into array
+ * Create and push a monster into array monsters
  */
 function createMonster() {
     var iImg = Math.floor(Math.random() * monImg.length); // random image's index
@@ -166,20 +168,20 @@ function createMonster() {
  * Draw monster: random image and position
  */
 function drawMonster() {
-    for (var j = 0; j < monsters.length; j++) {
-        context.drawImage(monsters[j].img, monsters[j].x, monsters[j].y, MON_SIZE, MON_SIZE);
-    }
-    // context.drawImage(monsters[0].img, monsters[0].x, monsters[0].y, MON_SIZE, MON_SIZE);
+    // for (var j = 0; j < monsters.length; j++) {
+        // context.drawImage(monsters[j].img, monsters[j].x, monsters[j].y, MON_SIZE, MON_SIZE);
+    // }
+    context.drawImage(monsters[0].img, monsters[0].x, monsters[0].y, MON_SIZE, MON_SIZE);
 }
 
 /**
  * Move monster in map
  */
 function moveMonster() {
-    for (var j = 0; j < monsters.length; j++) {
-        monsters[j].move();
-    }
-    // monsters[0].move();
+    // for (var j = 0; j < monsters.length; j++) {
+        // monsters[j].move();
+    // }
+    monsters[0].move();
 }
 
 /**
@@ -251,7 +253,9 @@ function clickMenu(mouseX, mouseY) {
     if (mouseX >= HALF_MAP_W && mouseX <= (HALF_MAP_W + BTN_SIZE) && mouseY >= M_TOP && mouseY <= (M_TOP + BTN_SIZE)) {
         if (BOOM > 0 && STATUS == 1) {
             for (i = 0; i < monsters.length; i++) {
-                if (monsters[i].isAlive == 1) {	SCORE += 10; }
+                if (monsters[i].isAlive == 1) {
+                    SCORE += 10;
+                }
             }
             BOOM--;
             monsters = [];
