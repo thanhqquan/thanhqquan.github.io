@@ -9,14 +9,17 @@ const MON_SIZE = 50; // monster size
 const M_TOP = 10; // margin-top
 const M_RIGHT = 10; // margin-right
 const ICO_SIZE = 8; // icon size (heart)
+const GOT_SIZE = 32;
 var SCORE = 0;
 var HEART = 5;
 var BOOM = 3;
 var SPEED = 1;
+var UP_LV_SCORE = SPEED * 50 + 50;
+var SPM = 2000 / SPEED; // Seconds per Monster
 var STATUS = 1; // Game status: 1 = Playing, 2 = Pause, 0 = Game over
 
 /**
- * Draw background
+ * Draw background (button: BOOM, PAUSE, RESTART, PLAY. Icon: HEART)
  */
 // Map (width: 500, height: 500) is under Menu (width: 500, height: 100)
 const MIN_W = 0;
@@ -41,9 +44,11 @@ var BTN_PLAY = new Image();
 BTN_PLAY.src = "img/icon_play.png";
 var ICO_HEART = new Image(); // icon heart
 ICO_HEART.src = "img/icon_heart.ico";
+var GOTCHA = new Image();
+GOTCHA.src = "img/gotcha.png";
 
 var monImg = [];
-var monMaxNum = 9; // Monster's maximum number
+var monMaxNum = 9; // Monster's maximum image number
 for (var i = 0; i<= (monMaxNum - 1); i++) {
     monImg[i] = new Image();
     monImg[i].src = "img/monster" + (i + 1) + ".png";
@@ -51,7 +56,7 @@ for (var i = 0; i<= (monMaxNum - 1); i++) {
 /**
  * Monster's information: image of monster, coordinate(x, y), direction point(dirX, dirY), monster is alive (= 1) or not (= 0) 
  */
-function monster(img, x, y, startX, startY, dirX, dirY, isAlive) {
+function monster(img, x, y, startX, startY, dirX, dirY) {
     this.img = img;
     this.x = x;
     this.y = y;
@@ -59,7 +64,6 @@ function monster(img, x, y, startX, startY, dirX, dirY, isAlive) {
     this.startY = startY;
     this.dirX = dirX;
     this.dirY = dirY;
-    this.isAlive = isAlive;
 }
 
 /**
@@ -84,65 +88,31 @@ position[8] = new startPosition(MAP_W, MAP_H); // right bottom
 
 var monsters = [];
 
-// var stop = false;
-// var fps, fpsInterval, startTime, now, then, elapsed;
-
-// startAnimating(5);
-
-// function startAnimating(fps) {
-    // fpsInterval = 1000 / fps;
-    // then = Date.now();
-    // startTime = then;
-    // loadGame();
-// }
-
 /**
  * Load Game on browser
  */
 function loadGame() {
     drawForm();
-    if (STATUS == 1) {
-        createMonster();
-        // setInterval(createMonster, 1000 / 60);
+    if (monsters.length === 0) { createMonster(); }
+    if (STATUS === 1) {
         drawMonster();
         moveMonster();
-    } else if (STATUS == 2) {
+    } else if (STATUS === 2) {
         drawMonster();
         context.fillText("PAUSE", HALF_MAP_W, HALF_MAP_H);
-    } else {
+    } else if (STATUS === 0) {
         context.fillText("GAME OVER", HALF_MAP_W, HALF_MAP_H);
     }
+    checkGameOver();
     reqAnimation(loadGame);
-    // setTimeout(loadGame, 1000 / 60);
-
-    // drawForm();
-    // if (STATUS == 1) {
-        // if (stop) {
-            // return;
-        // }
-        
-        // now = Date.now();
-        // elapsed = now - then;
-        
-        // if (elapsed > fpsInterval) {
-            // then = now - (elapsed % fpsInterval);
-            // createMonster();
-        // }
-        // drawMonster();		
-        // moveMonster();
-    // } else if (STATUS == 2) {
-        // context.fillText("PAUSE", HALF_MAP_W, HALF_MAP_H);
-        // drawMonster();
-    // } else {
-        // context.fillText("GAME OVER", HALF_MAP_W, HALF_MAP_H);
-    // }
-    // reqAnimation(loadGame);
 }
 
 /**
- * Create and push a monster into array monsters
+ *  After SPM seconds, create a monster (image, postion) and push it into array monsters
  */
+var createMon;
 function createMonster() {
+    upLevel();
     var iImg = Math.floor(Math.random() * monImg.length); // random image's index
     var iPos = Math.floor(Math.random() * position.length); // random start position's index
 
@@ -154,7 +124,7 @@ function createMonster() {
         case 4: // monster's start position is center
             var i = 4;
             // random direction position for monster
-            while (i == 4) {
+            while (i === 4) {
                 i = Math.floor(Math.random() * position.length);
             }
             
@@ -165,23 +135,30 @@ function createMonster() {
 }
 
 /**
- * Draw monster: random image and position
+ * Draw monster in monsters array
  */
 function drawMonster() {
-    // for (var j = 0; j < monsters.length; j++) {
-        // context.drawImage(monsters[j].img, monsters[j].x, monsters[j].y, MON_SIZE, MON_SIZE);
-    // }
-    context.drawImage(monsters[0].img, monsters[0].x, monsters[0].y, MON_SIZE, MON_SIZE);
+    for (var i = 0; i < monsters.length; i++) {
+        context.drawImage(monsters[i].img, monsters[i].x, monsters[i].y, MON_SIZE, MON_SIZE);
+    }
 }
 
 /**
  * Move monster in map
  */
 function moveMonster() {
-    // for (var j = 0; j < monsters.length; j++) {
-        // monsters[j].move();
-    // }
-    monsters[0].move();
+    for (var i = 0; i < monsters.length; i++) {
+        monsters[i].move();
+        if (monsters[i].x === monsters[i].startX && monsters[i].y === monsters[i].startY) {
+            monsters.splice(i, 1);
+            HEART--;
+            if (HEART === 0) {
+                checkGameOver();
+            } else if (SCORE !== 0) {
+                SCORE -= 10;
+            }
+        }
+    }
 }
 
 /**
@@ -191,9 +168,9 @@ function drawForm() {
     context.drawImage(BG_IMG, 0, 0, CANVAS.width, CANVAS.height); // fit image with canvas's width and height
     context.drawImage(BTN_BOOM, HALF_MAP_W, M_TOP, BTN_SIZE, BTN_SIZE);
 
-    if (STATUS == 1) {
+    if (STATUS === 1) {
         context.drawImage(BTN_PAUSE, HALF_MAP_W + BTN_SIZE + M_RIGHT, M_TOP, BTN_SIZE, BTN_SIZE);
-    } else if (STATUS == 2) {
+    } else if (STATUS === 2) {
         context.drawImage(BTN_PLAY, HALF_MAP_W + BTN_SIZE + M_RIGHT, M_TOP, BTN_SIZE, BTN_SIZE)
     }
 
@@ -212,7 +189,7 @@ function drawForm() {
  * Move monster
  */
 monster.prototype.move = function() {
-    if (this.x == this.dirX && this.y == this.dirY) {
+    if (this.x === this.dirX && this.y === this.dirY) {
         this.dirX = this.startX;
         this.dirY = this.startY;
     }
@@ -240,6 +217,8 @@ function mouseDown(e) {
 
     if (mouseY < MIN_H) {
         clickMenu(mouseX, mouseY);
+    } else if (mouseY >= MIN_H && STATUS === 1) {
+        clickMonster(mouseX, mouseY);
     }
 }
 
@@ -251,31 +230,80 @@ function mouseDown(e) {
 function clickMenu(mouseX, mouseY) {
     // Boom
     if (mouseX >= HALF_MAP_W && mouseX <= (HALF_MAP_W + BTN_SIZE) && mouseY >= M_TOP && mouseY <= (M_TOP + BTN_SIZE)) {
-        if (BOOM > 0 && STATUS == 1) {
+        if (BOOM > 0 && STATUS === 1) {
             for (i = 0; i < monsters.length; i++) {
-                if (monsters[i].isAlive == 1) {
-                    SCORE += 10;
-                }
+                SCORE += 10;
             }
             BOOM--;
             monsters = [];
-            drawForm();
         }
     }
     // Pause
     if (mouseX >= (HALF_MAP_W + BTN_SIZE + M_RIGHT) && mouseX <= (HALF_MAP_W + BTN_SIZE * 2 + M_RIGHT) && mouseY >= M_TOP && mouseY <= (M_TOP + BTN_SIZE)) {
-        if (STATUS == 1) {
+        if (STATUS === 1) {
             STATUS = 2;
-        } else if (STATUS == 2) {
+            clearInterval(createMon);
+        } else if (STATUS === 2) {
             STATUS = 1;
+            createMon = setInterval(function(){ createMonster() }, SPM);
         }
     }
     // Restart
     if (mouseX >= (HALF_MAP_W + BTN_SIZE * 2 + M_RIGHT * 2) && mouseX <=(HALF_MAP_W + BTN_SIZE * 3 + M_RIGHT * 2) && mouseY >= M_TOP && mouseY <= (M_TOP + BTN_SIZE)) {
+        STATUS = 1;
         SCORE = 0;
         HEART = 5;
         SPEED = 1;
         BOOM = 3;
         monsters = [];
+        createMon = setInterval(function(){ createMonster() }, SPM);
+    }
+}
+
+/**
+ * Click monster (Miss: minus SCORE, minus HEART. Accurate: plus SCORE)
+ * @param mouseX: coordinate x
+ * @param mousey: coordinate y
+ */
+function clickMonster(mouseX, mouseY) {
+    var mon_length = monsters.length;
+
+    for (var i = 0; i < monsters.length; i++) {
+        var monWidth = monsters[i].x + MON_SIZE;
+        var monHeight = monsters[i].y + MON_SIZE;
+        
+        if (mouseX >= monsters[i].x && mouseX <= monWidth && mouseY >= monsters[i].y && mouseY <= monHeight) {
+            monsters.splice(i, 1);
+        }
+    }
+
+    if (monsters.length < mon_length) {
+        SCORE += 10;
+        context.drawImage(GOTCHA, mouseX - GOT_SIZE / 2, mouseY - GOT_SIZE / 2, GOT_SIZE, GOT_SIZE);
+    } else {
+        HEART--;
+        if (HEART === 0) {
+            checkGameOver();
+        } else if (SCORE !== 0) {
+            SCORE -= 10;
+        }
+    }
+}
+
+/**
+ * Up SPEED when SCORE is high enough (SPEED boost)
+ */
+function upLevel() {
+    if (SCORE > UP_LV_SCORE) {
+        SPEED *= 5;
+    }
+}
+
+/**
+ * Game over when HEART is equal 0
+ */
+function checkGameOver() {
+    if (HEART <= 0) {
+        STATUS = 0;
     }
 }
