@@ -14,20 +14,20 @@ var SCORE = 0;
 var HEART = 5;
 var BOOM = 3;
 var SPEED = 1;
-var UP_LV_SCORE = SPEED * 30;
-var SPM = 2000; // Seconds per Monster
-var STATUS = true; // Game status: 1 = Playing, 2 = Pause, 0 = Game over
+var UP_LV_SCORE = SPEED * 50;
+var SPM = 2000; // Seconds per Monster: create monster after SPM seconds
+var STATUS = true; // Game status: Playing - true, Pause or Game over - false
 
 /**
  * Draw background (button: BOOM, PAUSE, RESTART, PLAY. Icon: HEART)
  */
-// Map (width: 500, height: 500) is under Menu (width: 500, height: 100)
+// Map (width: 530, height: 530) is under Menu (width: 530, height: 100)
 const MIN_W = 0;
 const MIN_H = 100;
 var CANVAS = document.getElementById("canvas");
-CANVAS.width = 500;
+CANVAS.width = 530;
 var MAP_W = CANVAS.width - MON_SIZE;
-CANVAS.height = 500 + MIN_H;
+CANVAS.height = 530 + MIN_H;
 var MAP_H = CANVAS.height - MON_SIZE;
 var HALF_MAP_W = (MAP_W + MIN_W) / 2;
 var HALF_MAP_H = (MAP_H + MIN_H) / 2;
@@ -47,14 +47,17 @@ ICO_HEART.src = "img/icon_heart.ico";
 var GOTCHA = new Image();
 GOTCHA.src = "img/gotcha.png";
 
-var monImg = [];
+var monImg = []; // Monsters's image source
 var monMaxNum = 9; // Monster's maximum image number
 for (var i = 0; i <= (monMaxNum - 1); i++) {
     monImg[i] = new Image();
     monImg[i].src = "img/monster" + (i + 1) + ".png";
 }
+
+var monsters = []; // Monsters can be display in game
+
 /**
- * Monster's information: image of monster, coordinate(x, y), direction point(dirX, dirY), monster is alive (= 1) or not (= 0) 
+ * Monster's information: image of monster, coordinate(x, y), direction point(dirX, dirY), monster's speed 
  */
 function monster(img, x, y, startX, startY, dirX, dirY, speed) {
     this.img = img;
@@ -65,6 +68,16 @@ function monster(img, x, y, startX, startY, dirX, dirY, speed) {
     this.dirX = dirX;
     this.dirY = dirY;
     this.speed = speed;
+}
+
+var gotchaArray = []; // Display "gotcha" when monster is clicked
+
+/**
+ * Gotcha's information: coordinate(x, y)
+ */
+function gotcha(x, y) {
+    this.x = x;
+    this.y = y;
 }
 
 /**
@@ -87,14 +100,13 @@ position[6] = new startPosition(MIN_W, MAP_H); // left bottom
 position[7] = new startPosition(HALF_MAP_W, MAP_H); // middle bottom
 position[8] = new startPosition(MAP_W, MAP_H); // right bottom
 
-var monsters = [];
-
 /**
  * Load Game on browser
  */
 function loadGame() {
     drawForm();
-    // if (monsters.length === 0) { createMonster(); }
+    UP_LV_SCORE = SPEED * 50;
+    if (monsters.length === 0) { createMonster(); }
     if (STATUS === true) {
         drawMonster();
         moveMonster();
@@ -106,7 +118,6 @@ function loadGame() {
         clearInterval(createMon);
         context.fillText("GAME OVER", HALF_MAP_W, HALF_MAP_H);
     }
-    console.log(STATUS);
     checkGameOver();
     reqAnimation(loadGame);
 }
@@ -176,7 +187,7 @@ function drawForm() {
     if (STATUS === true) {
         context.drawImage(BTN_PAUSE, HALF_MAP_W + BTN_SIZE + M_RIGHT, M_TOP, BTN_SIZE, BTN_SIZE);
     } else if (STATUS === false) {
-        context.drawImage(BTN_PLAY, HALF_MAP_W + BTN_SIZE + M_RIGHT, M_TOP, BTN_SIZE, BTN_SIZE)
+        context.drawImage(BTN_PLAY, HALF_MAP_W + BTN_SIZE + M_RIGHT, M_TOP, BTN_SIZE, BTN_SIZE);
     }
 
     context.drawImage(BTN_RESTART, HALF_MAP_W + BTN_SIZE * 2 + M_RIGHT * 2, M_TOP, BTN_SIZE, BTN_SIZE);
@@ -188,6 +199,9 @@ function drawForm() {
     }
     context.fillText("Speed: " + SPEED, M_RIGHT, M_TOP * 7);
     context.fillText(BOOM, HALF_MAP_W + BTN_SIZE / 2, M_TOP * 7);
+    for (var i = 0; i < gotchaArray.length; i++) {
+        context.drawImage(GOTCHA, gotchaArray[i].x, gotchaArray[i].y, GOT_SIZE, GOT_SIZE);
+    }
 }
 
 /**
@@ -212,10 +226,11 @@ monster.prototype.move = function() {
     }
 }
 
-CANVAS.addEventListener("mousedown", mouseDown, false);
 /**
  * Event Click: click Menu or Map
+ * @param e: event object (mousedown)
  */
+CANVAS.addEventListener("mousedown", mouseDown, false);
 function mouseDown(e) {
     var mouseX = e.pageX - CANVAS.offsetLeft;
     var mouseY = e.pageY - CANVAS.offsetTop;
@@ -262,9 +277,9 @@ function clickMenu(mouseX, mouseY) {
         BOOM = 3;
         SPM = 2000;
         monsters = [];
+        gotchaArray = [];
         clearInterval(createMon);
         createMon = setInterval(function(){ createMonster() }, SPM);
-        loadGame();
     }
 }
 
@@ -287,7 +302,8 @@ function clickMonster(mouseX, mouseY) {
 
     if (monsters.length < mon_length) {
         SCORE += 10;
-        // context.drawImage(GOTCHA, mouseX - GOT_SIZE / 2, mouseY - GOT_SIZE / 2, GOT_SIZE, GOT_SIZE);
+        var got = new gotcha(mouseX - GOT_SIZE / 2, mouseY - GOT_SIZE / 2);
+        gotchaArray.push(got);
     } else {
         HEART--;
         if (HEART === 0) {
@@ -302,11 +318,12 @@ function clickMonster(mouseX, mouseY) {
  * Up SPEED when SCORE is high enough (SPEED boost)
  */
 function upSpeed() {
-    if (SCORE > UP_LV_SCORE) {
-        if (SPEED === 1) {
-            SPEED *= 5;
+    if (SCORE >= UP_LV_SCORE) {
+        if (SPEED < 5) {
+            SPEED++;
+        } else {
+            SPEED *= 2;
         }
-        // SPM /= SPEED;
     }
 }
 
