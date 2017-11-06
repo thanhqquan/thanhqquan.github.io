@@ -1,0 +1,42 @@
+@charset "utf-8";
+#container {
+	margin: 0 auto;
+	width: 100%;
+	text-align: center;
+}
+#btn-left {
+	position: absolute;
+	top: 50%;
+	left: 20%;
+}
+#btn-right {
+	position: absolute;
+	top: 50%;
+	right: 20%;
+}
+/*title element*/
+.title img{
+	width: 50px;
+	height: 50px;
+	margin-bottom: -10px;
+}
+.title { color: blue; }
+/*slide element*/
+.slide img {
+	width: 670px;
+	height: 360px;
+}
+/*list-image element*/
+.list-image {
+	width: 75px;
+	height: 38px;
+	cursor: pointer;
+	display: inline-block;
+}
+.button {
+	cursor: pointer;
+	width: 50px;
+	height: 50px;
+}
+/*Border active image in list-image*/
+.active { border: 4px solid red; }
