@@ -33,7 +33,6 @@ function showCalendar(year, month) {
     for (var i = MINCELL; i < MAXCELL; i++) {
         $("td:eq(" + i + ")").html("");
         $("td:eq(" + i + ")").css("backgroundColor", "");
-        // $("td:eq(" + i + ")").removeAttr("backgroundColor");
         $("td:eq(" + i + ")").css("border", "2d2d2d");
     }
     
@@ -174,11 +173,11 @@ $(function() {
            if (cellDay !== "") {
                $(this).css("border", "1px solid red");
                PICKED_DAY_VAL = CUR_YEAR + "-" + CUR_MONTH + "-" + cellDay;
-               
+               $("#picked-day").val(PICKED_DAY_VAL);
                showCalendar(CUR_YEAR, CUR_MONTH);
            } else {
                $(this).css("border", "1px solid orange");
            }
        });
-   } 
+   }
 });
