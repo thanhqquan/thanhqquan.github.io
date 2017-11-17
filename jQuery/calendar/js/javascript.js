@@ -29,11 +29,11 @@ function showCalendar(year, month) {
     var day;
     day = MINCELL + firstDate; // index of cell
     
-    // Change color of cells
+    // Change color of cells (from MINCELL to MAXCELL) to #2d2d2d, border 1px solid #2d2d2d
     for (var i = MINCELL; i < MAXCELL; i++) {
         $("td:eq(" + i + ")").html("");
         $("td:eq(" + i + ")").css("backgroundColor", "");
-        $("td:eq(" + i + ")").css("border", "2d2d2d");
+        $("td:eq(" + i + ")").css("border", "1px solid #2d2d2d");
     }
     
     // Add number to cells and change color of cells to white
@@ -47,6 +47,7 @@ function showCalendar(year, month) {
     if (CUR_YEAR === TODAY.getFullYear() && CUR_MONTH === (TODAY.getMonth() + 1)) {
         var CUR_DAY = (day - 1) + TODAY.getDate() - lastDate;
         $("td:eq(" + (CUR_DAY) + ")").css("backgroundColor", "#00ace6");
+        $("td:eq(" + (CUR_DAY) + ")").css("border", "1px solid red");
     }
     
     curTime();
