@@ -166,7 +166,7 @@ $(function() {
    for (var i = MINCELL; i < MAXCELL; i++) {
        $("td:eq(" + i + ")").on("click", function() {
            for (var j = MINCELL; j < MAXCELL; j++) {
-               $("td:eq(" + j + ")").css("border", "");
+               $("td:eq(" + j + ")").css("border", "1px solid #2d2d2d");
            }
            
            var cellDay = $(this).html();
@@ -175,7 +175,6 @@ $(function() {
                $(this).css("border", "1px solid red");
                PICKED_DAY_VAL = CUR_YEAR + "-" + CUR_MONTH + "-" + cellDay;
                $("#picked-day").val(PICKED_DAY_VAL);
-               showCalendar(CUR_YEAR, CUR_MONTH);
            } else {
                $(this).css("border", "1px solid orange");
            }
