@@ -40,12 +40,15 @@ function showCalendar(year, month) {
         CELL[day].style.backgroundColor = "white";
         day++;
     }
-    curTime();
+    
     // Change color of cell, which is TODAY
     if (CUR_YEAR === TODAY.getFullYear() && CUR_MONTH === (TODAY.getMonth() + 1)) {
-        var CUR_DATE = 12 + TODAY.getDate();
+        var CUR_DATE = (day - 1) + TODAY.getDate() - lastDate;
         CELL[CUR_DATE].style.backgroundColor = "#00ace6";
+        CELL[CUR_DATE].style.border = "1px solid red";
     }
+    
+    curTime();
 }
 
 /**
