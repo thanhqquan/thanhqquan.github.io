@@ -175,6 +175,7 @@ $(function() {
                $(this).css("border", "1px solid red");
                PICKED_DAY_VAL = CUR_YEAR + "-" + CUR_MONTH + "-" + cellDay;
                $("#picked-day").val(PICKED_DAY_VAL);
+               $("table-calendar").css("display", "none");
            } else {
                $(this).css("border", "1px solid orange");
            }
