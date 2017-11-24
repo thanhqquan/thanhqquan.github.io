@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="../calendar/assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>
+      Form Ajax - jQuery
+    </title>
+  </head>
+  <body>
+    <div id="container">
+      <form method="post">
+        <div class ="form-row">
+          <div class="column-left">
+            <b>Username:</b>
+          </div>
+          <div class="column-right">
+            <input type="text" name="username" id="username" class="username">
+            <span class="error" id="error-username"></span>
+          </div>
+        </div>
+        <div class ="form-row">
+          <div class="column-left">
+            <b>Password:</b>
+          </div>
+          <div class="column-right">
+            <input type="password" name="password" id="password" onchange="checkPasswordLength()">
+            <span class="error" id="error-password"></span>
+          </div>
+        </div>
+        <div class ="form-row">
+          <div class="column-left">
+            <b>Email:</b>
+          </div>
+          <div class="column-right">
+            <input type="text" name="email" id="email" onchange="checkEmailFormat()">
+            <span class="error" id="error-email"></span>
+          </div>
+        </div>
+        <div class ="form-row">
+          <div class="column-left">
+            <b>Birthday:</b>
+          </div>
+          <div class="column-right">
+            <div class="calendar-header">
+              <input type="text" name="birthday" id="picked-day" onchange="checkBirthdayFormat()" readonly="">
+            </div>
+            <table id="table-calendar">
+              <tbody>
+                <tr class="control">
+                  <td class="year" onclick="adjacentYear(-1)">&lt;&lt;</td>
+                  <td class="month" onclick="adjacentMonth(-1)">&lt;</td>
+                  <td colspan="2">
+                    <select id="month" onchange="pickMonth()">
+                      <option value="1">January</option>
+                      <option value="2">February</option>
+                      <option value="3">March</option>
+                      <option value="4">April</option>
+                      <option value="5">May</option>
+                      <option value="6">June</option>
+                      <option value="7">July</option>
+                      <option value="8">August</option>
+                      <option value="9">September</option>
+                      <option value="10">October</option>
+                      <option value="11">November</option>
+                      <option value="12">December</option>
+                    </select>
+                  </td>
+                  <td>
+                    <select id="year" onchange="pickYear()"></select>
+                  </td>
+                  <td class="month" onclick="adjacentMonth(1)">&gt;</td>
+                  <td class="year" onclick="adjacentYear(1)">&gt;&gt;</td>
+                </tr>
+                <tr class="weekdays">
+                  <td>Sun</td>
+                  <td>Mon</td>
+                  <td>Tue</td>
+                  <td>Wed</td>
+                  <td>Thu</td>
+                  <td>Fri</td>
+                  <td>Sat</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+            <span class="error" id="error-birthday"></span>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="column-left"></div>
+          <div class="column-right">
+            <input type="button" name="submit" value="SUBMIT" onclick="submitForm()">
+            <input type="button" value="REFRESH" onclick="window.location.href=window.location.href">
+          </div>
+        </div>
+      </form>
+      <span id="status"></span>
+    </div>
+    <script type="text/javascript" src="./../calendar/js/javascript.js"></script>
+    <script type="text/javascript" src="./js/javascript.js"></script>
+  </body>
+</html>
