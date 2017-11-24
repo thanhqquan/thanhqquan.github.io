@@ -3,6 +3,7 @@
   <head>
     <link rel="stylesheet" href="../calendar/assets/css/style.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <title>
       Form Ajax - jQuery
     </title>
@@ -15,7 +16,7 @@
             <b>Username:</b>
           </div>
           <div class="column-right">
-            <input type="text" name="username" id="username" class="username">
+            <input type="text" name="username" id="username">
             <span class="error" id="error-username"></span>
           </div>
         </div>
@@ -24,7 +25,7 @@
             <b>Password:</b>
           </div>
           <div class="column-right">
-            <input type="password" name="password" id="password" onchange="checkPasswordLength()">
+            <input type="password" name="password" id="password">
             <span class="error" id="error-password"></span>
           </div>
         </div>
@@ -33,7 +34,7 @@
             <b>Email:</b>
           </div>
           <div class="column-right">
-            <input type="text" name="email" id="email" onchange="checkEmailFormat()">
+            <input type="text" name="email" id="email">
             <span class="error" id="error-email"></span>
           </div>
         </div>
@@ -43,15 +44,15 @@
           </div>
           <div class="column-right">
             <div class="calendar-header">
-              <input type="text" name="birthday" id="picked-day" onchange="checkBirthdayFormat()" readonly="">
+              <input type="text" name="birthday" id="picked-day" readonly="">
             </div>
             <table id="table-calendar">
               <tbody>
                 <tr class="control">
-                  <td class="year" onclick="adjacentYear(-1)">&lt;&lt;</td>
-                  <td class="month" onclick="adjacentMonth(-1)">&lt;</td>
+                  <td class="year">&lt;&lt;</td>
+                  <td class="month">&lt;</td>
                   <td colspan="2">
-                    <select id="month" onchange="pickMonth()">
+                    <select id="month">
                       <option value="1">January</option>
                       <option value="2">February</option>
                       <option value="3">March</option>
@@ -67,10 +68,10 @@
                     </select>
                   </td>
                   <td>
-                    <select id="year" onchange="pickYear()"></select>
+                    <select id="year"></select>
                   </td>
-                  <td class="month" onclick="adjacentMonth(1)">&gt;</td>
-                  <td class="year" onclick="adjacentYear(1)">&gt;&gt;</td>
+                  <td class="month">&gt;</td>
+                  <td class="year">&gt;&gt;</td>
                 </tr>
                 <tr class="weekdays">
                   <td>Sun</td>
@@ -143,14 +144,14 @@
         <div class="form-row">
           <div class="column-left"></div>
           <div class="column-right">
-            <input type="button" name="submit" value="SUBMIT" onclick="submitForm()">
-            <input type="button" value="REFRESH" onclick="window.location.href=window.location.href">
+            <input type="button" name="submit" value="SUBMIT">
+            <input type="button" value="REFRESH">
           </div>
         </div>
       </form>
       <span id="status"></span>
     </div>
-    <script type="text/javascript" src="./../calendar/js/javascript.js"></script>
-    <script type="text/javascript" src="./js/javascript.js"></script>
+    <script type="text/javascript" src="../calendar/js/javascript.js"></script>
+    <script type="text/javascript" src="js/javascript.js"></script>
   </body>
 </html>
