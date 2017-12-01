@@ -9,7 +9,9 @@ var CUR_MONTH = TODAY.getMonth() + 1;
 var CUR_YEAR = TODAY.getFullYear();
 const MINCELL = 13;
 const MAXCELL = 55;
+
 var PICKED_DAY_VAL = CUR_YEAR + "-" + CUR_MONTH + "-" + CUR_DATE;
+
 
 /*
  Display the Calendar
@@ -32,7 +34,7 @@ function showCalendar(year, month) {
     // Change color of cells (from MINCELL to MAXCELL) to #2d2d2d, border 1px solid #2d2d2d
     for (var i = MINCELL; i < MAXCELL; i++) {
         $("td:eq(" + i + ")").html("");
-        $("td:eq(" + i + ")").css("backgroundColor", "");
+        $("td:eq(" + i + ")").css("backgroundColor", "#2d2d2d");
         $("td:eq(" + i + ")").css("border", "1px solid #2d2d2d");
     }
     
@@ -162,23 +164,38 @@ $($("#year").change(function() {
 /*
  Choose a day, display it with format yyyy-mm-dd in tag input has id="picked-day"
 */
-$(function() {
-   for (var i = MINCELL; i < MAXCELL; i++) {
-       $("td:eq(" + i + ")").on("click", function() {
-           for (var j = MINCELL; j < MAXCELL; j++) {
-               $("td:eq(" + j + ")").css("border", "1px solid #2d2d2d");
-           }
-           
-           var cellDay = $(this).html();
-           
-           if (cellDay !== "") {
-               $(this).css("border", "1px solid red");
-               PICKED_DAY_VAL = CUR_YEAR + "-" + CUR_MONTH + "-" + cellDay;
-               $("#picked-day").val(PICKED_DAY_VAL);
-               $("table-calendar").css("display", "none");
-           } else {
-               $(this).css("border", "1px solid orange");
-           }
-       });
-   }
+$(function pickDate() {
+    for (var i = MINCELL; i < MAXCELL; i++) {
+        $("td:eq(" + i + ")").on("click", function() {
+            for (var j = MINCELL; j < MAXCELL; j++) {
+                $("td:eq(" + j + ")").css("border", "1px solid #2d2d2d");   
+            }
+            // end for
+            var cellDay = $(this).html();
+            if (cellDay !== "") {
+                $(this).css("border", "1px solid red");
+                PICKED_DAY_VAL = CUR_YEAR + "-" + CUR_MONTH + "-" + cellDay;
+                $("#picked-day").val(PICKED_DAY_VAL);
+                $("#table-calendar").css("display", "none"); // Hide Calendar
+               
+                // Check birthday
+                var tbBirthday = PICKED_DAY_VAL; 
+                var myDate = Date.parse(tbBirthday);
+                var now = Date.parse(NOW);
+                var errorBirthday = $("#error-birthday");
+
+                if (myDate > now) {
+                    errorBirthday.html("Birthday must be on or before today");
+                    return false;
+                } else {
+                    errorBirthday.html("");
+                    return true;
+                }
+                // end check
+               
+            } else {
+                $(this).css("border", "1px solid orange");
+            }
+        });
+    }
 });

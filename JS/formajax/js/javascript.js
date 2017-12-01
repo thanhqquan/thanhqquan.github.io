@@ -3,14 +3,14 @@
  * @author quan.hnt3777@sinhvien.hoasen.edu.vn (Quan Huynh)
  */
 
-/**
- * Check input Username (8<= length <= 35)
+/*
+ Check input Username (8 <= length <= 35)
  */
 function checkUsernameLength() {
     var tbUsername = document.getElementById("username").value; // value of textbox username
     var errorUsername = document.getElementById("error-username");
 
-    if (tbUsername.length == 0) {
+    if (tbUsername.length === 0) {
         errorUsername.innerHTML = "Please enter username";
         return false;
     } else if (tbUsername.length < 8) {
@@ -25,14 +25,14 @@ function checkUsernameLength() {
     }
 }
 
-/**
- * Check input Password (length >= 8)
+/*
+ Check input Password (length >= 8)
  */
 function checkPasswordLength() {
     var tbPassword = document.getElementById("password").value; // value of textbox password
     var errorPassword = document.getElementById("error-password");
 
-    if (tbPassword == 0) {
+    if (tbPassword === 0) {
         errorPassword.innerHTML = "Please enter password";
         return false;
     } else if (tbPassword.length < 8) {
@@ -44,15 +44,15 @@ function checkPasswordLength() {
     }
 }
 
-/**
- * Check input Email (format: English, has "@", ".", may has ".", "_", "-" before "@")
+/*
+ Check input Email (format: English, has "@", ".", may has ".", "_", "-" before "@")
  */
 function checkEmailFormat() {
     var tbEmail = document.getElementById("email").value; // value of textbox email
     var errorEmail = document.getElementById("error-email");
     var REGEX = /^([a-z0-9\._-]+)@([a-z]+)\.([a-z\.]{2,6})$/;
 
-    if (tbEmail.length == 0) {
+    if (tbEmail.length === 0) {
         errorEmail.innerHTML = "Please enter email";
         return false;
     } else if (!REGEX.test(tbEmail)) {
@@ -64,15 +64,13 @@ function checkEmailFormat() {
     }
 }
 
-/**
- * Check input Birthday (birthday <= now)
+/*
+ Check input Birthday (birthday <= now)
  */
 function checkBirthdayFormat() {
     var tbBirthday = document.getElementById("picked-day").value; // value of birthday
-    var myDate = new Date(tbBirthday);
-    var now = new Date();
-    var calendar = document.getElementById("table-calendar");
-    calendar.style.display = "none";
+    var myDate = Date.parse(tbBirthday);
+    var now = Date.parse(Date());
     var errorBirthday = document.getElementById("error-birthday");
 
     if (myDate > now) {
@@ -84,16 +82,16 @@ function checkBirthdayFormat() {
     }
 }
 
-/**
- * Display calendar when clicked on textbox picked-day
+/*
+ Display calendar when clicked on textbox picked-day
  */
 function presentCalendar() {
     var calendar = document.getElementById("table-calendar");
     calendar.style.display = "block";
 }
 
-/**
- * Validate information before submit to server 
+/*
+ Validate information before submit to server 
  */
 function submitForm() {
     var xhttp; // XMLHttpRequest
@@ -113,7 +111,7 @@ function submitForm() {
             xhttp = new ActiveXObject("Microsoft.XMLHTTP");
         }
         xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
+            if (this.readyState === 4 && this.status === 200) {
                 document.getElementById("status").innerHTML = xhttp.responseText;
             }
         };
